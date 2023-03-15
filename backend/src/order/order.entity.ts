@@ -1,4 +1,12 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { User } from './../user/user.entity';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  OneToMany,
+} from 'typeorm';
+import { OrderItem } from 'src/order-item/order-item.entity';
 
 @Entity({ name: 'order' })
 export class Order {
@@ -12,17 +20,23 @@ export class Order {
   phoneNumber: string;
 
   @Column({ nullable: true })
-  zipCode: string;
+  zipCode?: string;
 
   @Column({ nullable: true })
-  street: string;
+  street?: string;
 
   @Column({ nullable: true })
-  houseNumber: string;
+  houseNumber?: string;
 
   @Column({ nullable: true })
-  city: string;
+  city?: string;
 
   @Column({ nullable: true })
-  name: string;
+  name?: string;
+
+  @ManyToOne(() => User, (user) => user.orders, { nullable: true })
+  user?: User;
+
+  @OneToMany(() => OrderItem, (orderItem) => orderItem.order)
+  orderItems: OrderItem[];
 }
