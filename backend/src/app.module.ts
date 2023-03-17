@@ -1,3 +1,8 @@
+import { JwtController } from './auth/jwt-auth.controller';
+import { Category } from './category/category.entity';
+import { Product } from './product/product.entity';
+import { OrderItem } from 'src/order-item/order-item.entity';
+import { Order } from './order/order.entity';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
@@ -14,12 +19,12 @@ import { AuthModule } from './auth/auth.module';
       username: 'root',
       password: 'root',
       database: 'shop',
-      entities: [User],
+      entities: [User, Order, OrderItem, Product, Category],
       synchronize: true,
     }),
     AuthModule,
   ],
-  controllers: [AppController],
+  controllers: [AppController, JwtController],
   providers: [AppService],
 })
 export class AppModule {}

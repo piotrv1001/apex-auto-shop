@@ -10,15 +10,7 @@ import { HomeComponent } from './home/home.component';
     {
       path: '',
       component: HomeComponent
-    },
-    {
-      path: 'login',
-      component: LoginComponent
-    },
-    {
-      path: 'register',
-      component: RegisterComponent
-    },
+    }
   ])
-],})
+]})
 export class PagesRoutingModule { }

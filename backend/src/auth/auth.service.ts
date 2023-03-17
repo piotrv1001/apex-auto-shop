@@ -1,4 +1,5 @@
-import { Injectable } from '@nestjs/common';
+import { UserDTO } from './../user/user.dto';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { UserService } from 'src/user/user.service';
 import { JwtService } from '@nestjs/jwt';
 
@@ -19,8 +20,15 @@ export class AuthService {
     return null;
   }
 
-  async login(user: any) {
-    const payload = { email: user.email, id: user.id };
+  async login(userDTO: UserDTO) {
+    const foundUser = await this.usersService.getByEmail(userDTO.email);
+    if (!foundUser || foundUser.password !== userDTO.password) {
+      throw new HttpException(
+        'Invalid login name or password!',
+        HttpStatus.BAD_REQUEST,
+      );
+    }
+    const payload = { email: foundUser.email, id: foundUser.id };
     return {
       jwt_token: this.jwtService.sign(payload),
     };

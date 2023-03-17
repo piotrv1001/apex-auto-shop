@@ -1,0 +1,17 @@
+
+<form *ngIf="loginForm !== undefined" [formGroup]="loginForm" class="login-form ">
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Your email"
+      formControlName="email">
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Your password"
+      formControlName="password">
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="login()">Login</button>
+  <span *ngIf="!areCredentialsCorrect" style="color: red; margin-top: 1rem;">Invalid email or password</span>
+</form>
