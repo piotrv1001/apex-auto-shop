@@ -1,0 +1,9 @@
+<div class="products">
+  <div *ngFor="let product of products" class="product-item">
+    <app-product
+    [product]="product"
+    (productClick)="handleProductClick($event)">
+  </app-product>
+  </div>
+
+</div>

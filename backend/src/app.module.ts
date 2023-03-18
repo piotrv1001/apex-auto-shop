@@ -1,3 +1,7 @@
+import { OrderItemModule } from './order-item/order-item.module';
+import { OrderModule } from './order/order.module';
+import { CategoryModule } from './category/category.module';
+import { ProductModule } from './product/product.module';
 import { Category } from './category/category.entity';
 import { Product } from './product/product.entity';
 import { OrderItem } from 'src/order-item/order-item.entity';
@@ -29,6 +33,10 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       }),
     }),
     AuthModule,
+    ProductModule,
+    CategoryModule,
+    OrderModule,
+    OrderItemModule,
   ],
   controllers: [AppController],
   providers: [AppService],

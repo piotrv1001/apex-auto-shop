@@ -1,3 +1,6 @@
+import { ProductsComponent } from './pages/products/products.component';
+import { ProductComponent } from './components/product/product.component';
+import { HomeComponent } from './pages/home/home.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { httpInterceptorProviders } from './shared/interceptors/index';
 import { LoginComponent } from './pages/login/login.component';
@@ -12,12 +15,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    HomeComponent,
+    ProductComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +34,8 @@ import { MatButtonModule } from '@angular/material/button';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCardModule
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
