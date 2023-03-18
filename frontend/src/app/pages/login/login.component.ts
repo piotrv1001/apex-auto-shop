@@ -1,6 +1,5 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
-import { Router } from "@angular/router";
 import { UserDTO } from "src/app/model/dto/user.dto";
 import { AuthService } from "src/app/shared/auth/auth.service";
 
@@ -11,16 +10,16 @@ import { AuthService } from "src/app/shared/auth/auth.service";
 })
 export class LoginComponent implements OnInit {
 
+  @Output() registerBtnClick: EventEmitter<void> = new EventEmitter<void>();
   loginForm?: FormGroup;
   areCredentialsCorrect = true;
 
   constructor(
     private fb: FormBuilder,
-    private authService: AuthService,
-    private router: Router) {}
+    private authService: AuthService) {}
 
-  get email(): string {
-    return this.loginForm?.get('email')?.value;
+  get username(): string {
+    return this.loginForm?.get('username')?.value;
   }
 
   get password(): string {
@@ -29,14 +28,14 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
-      email: '',
+      username: '',
       password: ''
     });
   }
 
   login(): void {
     const userDto = new UserDTO(
-      this.email, this.password
+      this.username, this.password
     );
     this.authService.login(userDto).subscribe({
       next: () => {
@@ -44,9 +43,13 @@ export class LoginComponent implements OnInit {
       },
       error: () => {
         this.areCredentialsCorrect = false;
-        console.log('Invalid email or password');
+        console.log('Invalid username or password');
       }
     });
+  }
+
+  registerBtnClicked(): void {
+    this.registerBtnClick.emit();
   }
 
 }

@@ -16,7 +16,7 @@ export class UserService {
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(userDTO.password, salt);
     const user = new User();
-    user.email = userDTO.email;
+    user.username = userDTO.username;
     user.password = hashedPassword;
     return this.userRepository.save(user);
   }
@@ -29,8 +29,8 @@ export class UserService {
     return this.userRepository.findOneBy({ id: id });
   }
 
-  async getByEmail(email: string): Promise<User> {
-    return this.userRepository.findOneBy({ email: email });
+  async getByUsername(username: string): Promise<User> {
+    return this.userRepository.findOneBy({ username: username });
   }
 
   async delete(id: number): Promise<void> {

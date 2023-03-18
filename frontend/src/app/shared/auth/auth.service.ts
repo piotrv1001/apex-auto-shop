@@ -1,3 +1,4 @@
+import { JwtPayload } from './../../model/types/jwt-payload';
 import { BASE_URL } from './../../app.constants';
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
@@ -6,7 +7,7 @@ import { UserDTO } from "src/app/model/dto/user.dto";
 import { User } from 'src/app/model/entities/user.model';
 
 type JwtToken = {
-  jwt_token: string;
+  access_token: string;
 };
 
 @Injectable({
@@ -14,10 +15,16 @@ type JwtToken = {
 })
 export class AuthService {
 
-  ROUTE = 'users';
+  REGISTER_ROUTE = 'auth/register';
+  LOGIN_ROUTE = 'auth/login';
+  AUTH_ROUTE = 'auth/authenticate';
   isAuthSubject: Subject<boolean> = new Subject<boolean>();
 
   constructor(private http: HttpClient) {}
+
+  getToken(): string | null {
+    return localStorage.getItem('token');
+  }
 
   getAuthObs(): Observable<boolean> {
     return this.isAuthSubject.asObservable();
@@ -27,16 +34,16 @@ export class AuthService {
     this.isAuthSubject.next(true);
   }
 
-  isAuthenticated(): boolean {
-    return localStorage.getItem('token') !== null;
+  isAuthenticated(): Observable<JwtPayload> {
+    return this.http.get<JwtPayload>(`${BASE_URL}/${this.AUTH_ROUTE}`);
   }
 
   register(userDTO: UserDTO): Observable<User> {
-    return this.http.post<User>(`${BASE_URL}/${this.ROUTE}`, userDTO);
+    return this.http.post<User>(`${BASE_URL}/${this.REGISTER_ROUTE}`, userDTO);
   }
 
   login(userDTO: UserDTO): Observable<void> {
-    return this.http.post<JwtToken>(`${BASE_URL}/auth`, userDTO)
+    return this.http.post<JwtToken>(`${BASE_URL}/${this.LOGIN_ROUTE}`, userDTO)
       .pipe(map(response => this.authenticateSuccess(response)));
   }
 
@@ -48,7 +55,7 @@ export class AuthService {
   }
 
   private authenticateSuccess(response: JwtToken): void {
-    const jwt = response.jwt_token;
+    const jwt = response.access_token;
     localStorage.setItem('token', jwt);
   }
 }

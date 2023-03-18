@@ -2,5 +2,8 @@
   <router-outlet></router-outlet>
 </div>
 <ng-template #loginPage>
-  <app-login></app-login>
+  <app-login *ngIf="!createNewAccount; else registerPage" (registerBtnClick)="handleRegisterBtnClick()"></app-login>
+  <ng-template #registerPage>
+    <app-register (loginBtnClick)="handleLoginBtnClick()"></app-register>
+  </ng-template>
 </ng-template>

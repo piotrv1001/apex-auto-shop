@@ -1,1 +1,16 @@
-REGISTER
+<form *ngIf="registerForm !== undefined" [formGroup]="registerForm" class="register-form ">
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Your username"
+      formControlName="username">
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Your username"
+      formControlName="password">
+  </mat-form-field>
+  <button mat-raised-button color="accent" (click)="register()">Register</button>
+  <div style="margin-top: 1rem;"><button mat-button color="primary" (click)="loginBtnClicked()">Already have an account? Sign in</button></div>
+</form>

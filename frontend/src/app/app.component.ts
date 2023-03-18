@@ -1,3 +1,5 @@
+import { LocalStorageService } from './services/local-storage.service';
+import { JwtPayload } from './model/types/jwt-payload';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from './shared/auth/auth.service';
@@ -10,15 +12,35 @@ import { AuthService } from './shared/auth/auth.service';
 export class AppComponent implements OnInit, OnDestroy {
 
   isAuthenticated = false;
+  createNewAccount = false;
   authSub?: Subscription;
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private localStorageService: LocalStorageService) {}
 
   ngOnInit(): void {
-    this.isAuthenticated = this.authService.isAuthenticated();
+    this.authService.isAuthenticated().subscribe({
+      next: (payload: JwtPayload) => {
+        this.isAuthenticated = true;
+        this.localStorageService.saveUserId(payload.id);
+      },
+      error: (error) => {
+        this.isAuthenticated = false;
+        console.log(error)
+      }
+    });
     this.authSub = this.authService.getAuthObs().subscribe(auth => {
       this.isAuthenticated = auth;
     });
+  }
+
+  handleRegisterBtnClick(): void {
+    this.createNewAccount = true;
+  }
+
+  handleLoginBtnClick(): void {
+    this.createNewAccount = false;
   }
 
   ngOnDestroy(): void {
