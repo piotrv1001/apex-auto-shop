@@ -7,6 +7,9 @@
     [max]="maxVal"
     (applyBtnClick)="handleApplyBtnClick($event)">
   </app-price-slider>
+  <app-price-sorter
+    (priceSort)="handlePriceSort($event)">
+  </app-price-sorter>
   <div *ngFor="let product of filteredProducts" class="product-item">
     <app-product
       [product]="product"

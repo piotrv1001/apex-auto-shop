@@ -1,5 +1,7 @@
 <mat-card (click)="productClicked()" class="product-card">
-  <mat-card-header>{{ product?.name }}</mat-card-header>
+  <mat-card-header>
+    <mat-card-title>{{ product?.name }}</mat-card-title>
+  </mat-card-header>
   <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
   <mat-card-content>
     <p>{{ product?.description }}</p>

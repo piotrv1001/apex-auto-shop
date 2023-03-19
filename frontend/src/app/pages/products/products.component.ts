@@ -1,3 +1,4 @@
+import { Sort } from './../../model/types/sort';
 import { MinMax } from './../../model/types/min-max';
 import { Component, OnInit } from "@angular/core";
 import { Product } from "src/app/model/entities/product.model";
@@ -34,6 +35,14 @@ export class ProductsComponent implements OnInit {
   handleProductClick(id: number): void {
     const product = this.products.find(product => product.id === id);
     console.log('product', product);
+  }
+
+  handlePriceSort(sort: Sort): void {
+    if(sort === Sort.ASCENDING) {
+      this.filteredProducts.sort((a: Product, b: Product) => a.price - b.price);
+    } else {
+      this.filteredProducts.sort((a: Product, b: Product) => b.price - a.price);
+    }
   }
 
   private getProducts(): void {

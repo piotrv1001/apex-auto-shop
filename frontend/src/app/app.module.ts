@@ -1,3 +1,4 @@
+import { PriceSorterComponent } from './components/price-sorter/price-sorter.component';
 import { PriceSliderComponent } from './components/price-slider/price-slider.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { ProductsComponent } from './pages/products/products.component';
@@ -20,7 +21,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatSliderModule } from '@angular/material/slider';
-
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { MatSliderModule } from '@angular/material/slider';
     ProductComponent,
     ProductsComponent,
     SearchBarComponent,
-    PriceSliderComponent
+    PriceSliderComponent,
+    PriceSorterComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +45,8 @@ import { MatSliderModule } from '@angular/material/slider';
     MatInputModule,
     MatButtonModule,
     MatCardModule,
-    MatSliderModule
+    MatSliderModule,
+    MatSelectModule
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]

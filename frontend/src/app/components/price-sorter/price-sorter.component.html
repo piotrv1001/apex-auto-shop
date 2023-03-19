@@ -1,0 +1,9 @@
+<mat-form-field appearance="fill">
+  <mat-label>{{ sortLabel }}</mat-label>
+  <mat-select [(ngModel)]="selectedOption" name="option">
+    <mat-option *ngFor="let option of sortingOptions" [value]="option">
+      {{option.label}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<button mat-raised-button color="primary" (click)="onPriceSortSelected()">{{ btnLabel }}</button>
