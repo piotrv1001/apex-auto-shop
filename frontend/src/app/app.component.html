@@ -1,4 +1,10 @@
 <div *ngIf="isAuthenticated; else loginPage">
+  <nav class="topnav">
+    <a [routerLink]="['/']">Home</a>
+    <a>Products</a>
+    <a>About</a>
+    <a [routerLink]="['/cart']" class="cart-link">Cart</a>
+  </nav>
   <router-outlet></router-outlet>
 </div>
 <ng-template #loginPage>

@@ -1,8 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { FindManyOptions, Repository } from 'typeorm';
 import { OrderDTO } from './order.dto';
 import { Order } from './order.entity';
+
+const relationshipNames = [];
+relationshipNames.push('user');
 
 @Injectable()
 export class OrderService {
@@ -29,6 +32,14 @@ export class OrderService {
 
   async getById(id: number): Promise<Order> {
     return this.orderRepository.findOneBy({ id: id });
+  }
+
+  async getByUserId(userId: number): Promise<Order[]> {
+    const options: FindManyOptions = {
+      relations: relationshipNames,
+      where: { user: { id: userId } },
+    };
+    return await this.orderRepository.find(options);
   }
 
   async delete(id: number): Promise<void> {

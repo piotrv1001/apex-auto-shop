@@ -1,3 +1,4 @@
+import { OrderItemComponent } from './components/order-item/order-item.component';
 import { PriceSorterComponent } from './components/price-sorter/price-sorter.component';
 import { PriceSliderComponent } from './components/price-slider/price-slider.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
@@ -34,7 +35,8 @@ import { MatIconModule } from '@angular/material/icon';
     ProductsComponent,
     SearchBarComponent,
     PriceSliderComponent,
-    PriceSorterComponent
+    PriceSorterComponent,
+    OrderItemComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,4 @@
-import { RegisterComponent } from './register/register.component';
-import { LoginComponent } from './login/login.component';
+import { CartComponent } from './cart/cart.component';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
@@ -10,6 +9,10 @@ import { HomeComponent } from './home/home.component';
     {
       path: '',
       component: HomeComponent
+    },
+    {
+      path: 'cart',
+      component: CartComponent
     }
   ])
 ]})

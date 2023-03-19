@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { OrderItemDTO } from './order-item.dto';
 import { OrderItem } from './order-item.entity';
 
 @Injectable()
@@ -11,11 +10,8 @@ export class OrderItemService {
     private readonly orderItemRepository: Repository<OrderItem>,
   ) {}
 
-  async create(orderItemDTO: OrderItemDTO): Promise<OrderItem> {
-    const orderItem = new OrderItem();
-    orderItem.productId = orderItemDTO.productId;
-    orderItem.orderId = orderItemDTO.orderId;
-    return this.orderItemRepository.save(orderItem);
+  async create(userId: number, productId: number): Promise<OrderItem> {
+    throw new Error('TODO');
   }
 
   async getAll(): Promise<OrderItem[]> {

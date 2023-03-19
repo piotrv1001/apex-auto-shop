@@ -1,5 +1,13 @@
 import { OrderDTO } from './order.dto';
-import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Query,
+} from '@nestjs/common';
 import { OrderService } from './order.service';
 import { Order } from './order.entity';
 
@@ -20,6 +28,11 @@ export class OrderController {
   @Get(':id')
   getById(@Param('id') id: number): Promise<Order> {
     return this.orderService.getById(id);
+  }
+
+  @Get()
+  getByUserId(@Query('userId') userId: number): Promise<Order[]> {
+    return this.orderService.getByUserId(userId);
   }
 
   @Delete(':id')
