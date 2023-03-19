@@ -1,3 +1,4 @@
+import { PriceSliderComponent } from './components/price-slider/price-slider.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { ProductComponent } from './components/product/product.component';
@@ -13,10 +14,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatSliderModule } from '@angular/material/slider';
 
 
 @NgModule({
@@ -27,17 +30,20 @@ import { MatCardModule } from '@angular/material/card';
     HomeComponent,
     ProductComponent,
     ProductsComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    PriceSliderComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatInputModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    MatSliderModule
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]

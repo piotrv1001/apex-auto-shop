@@ -2,11 +2,15 @@
   <app-search-bar
     (searchQueryChange)="handleSearchQueryChange($event)">
   </app-search-bar>
+  <app-price-slider *ngIf="!loadingProducts"
+    [min]="minVal"
+    [max]="maxVal"
+    (applyBtnClick)="handleApplyBtnClick($event)">
+  </app-price-slider>
   <div *ngFor="let product of filteredProducts" class="product-item">
     <app-product
       [product]="product"
       (productClick)="handleProductClick($event)">
   </app-product>
   </div>
-
 </div>

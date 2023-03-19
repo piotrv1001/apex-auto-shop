@@ -1,0 +1,17 @@
+<div class="wrapper">
+  <div class="min-max-row">
+    <mat-form-field appearance="fill">
+      <mat-label>{{ minLabel }}</mat-label>
+      <input matInput type="number" [(ngModel)]="minVal">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>{{ maxLabel }}</mat-label>
+      <input matInput type="number" [(ngModel)]="maxVal">
+    </mat-form-field>
+  </div>
+  <mat-slider [min]="min" [max]="max">
+    <input [(ngModel)]="minVal" matSliderStartThumb>
+    <input [(ngModel)]="maxVal" matSliderEndThumb>
+  </mat-slider>
+  <button mat-raised-button color="primary" (click)="applyBtnClicked()">{{ btnLabel }}</button>
+</div>

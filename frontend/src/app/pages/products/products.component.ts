@@ -1,3 +1,4 @@
+import { MinMax } from './../../model/types/min-max';
 import { Component, OnInit } from "@angular/core";
 import { Product } from "src/app/model/entities/product.model";
 import { ProductService } from "src/app/services/product.service";
@@ -11,6 +12,9 @@ export class ProductsComponent implements OnInit {
 
   products: Product[] = [];
   filteredProducts: Product[] = [];
+  minVal: number = 50;
+  maxVal: number = 10000;
+  loadingProducts = true;
 
   constructor(private productService: ProductService) {}
 
@@ -23,6 +27,10 @@ export class ProductsComponent implements OnInit {
     this.filteredProducts = this.products.filter(product => product.name.toLowerCase().includes(queryLowerCase) || product.description.toLowerCase().includes(queryLowerCase));
   }
 
+  handleApplyBtnClick(minMax: MinMax): void {
+    this.filteredProducts = this.products.filter(product => product.price >= minMax.min && product.price <= minMax.max);
+  }
+
   handleProductClick(id: number): void {
     const product = this.products.find(product => product.id === id);
     console.log('product', product);
@@ -32,6 +40,11 @@ export class ProductsComponent implements OnInit {
     this.productService.getAllProducts().subscribe((products: Product[]) => {
       this.products = products;
       this.filteredProducts = [...products];
+      this.minVal = Math.min(...this.products.map(product => product.price));
+      this.maxVal = Math.max(...this.products.map(product => product.price));
+      this.loadingProducts = false;
+      console.log('product min val', this.minVal);
+      console.log('product max val', this.maxVal);
     });
   }
 
