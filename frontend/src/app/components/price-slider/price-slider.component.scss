@@ -1,9 +1,17 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-  max-width: 400px;
+  width: 100%;
 }
 
 .min-max-row {
   display: flex;
+}
+
+.min-max-left {
+  margin-right: 0.5rem;
+}
+
+.min-max-right {
+  margin-left: 0.5rem;
 }

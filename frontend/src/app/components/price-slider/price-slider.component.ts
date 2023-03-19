@@ -10,8 +10,8 @@ export class PriceSliderComponent implements OnInit {
 
   @Input() min: number = 50;
   @Input() max: number = 10000;
-  @Input() minLabel: string = 'Min value';
-  @Input() maxLabel: string = 'Max value';
+  @Input() minLabel: string = 'Min price';
+  @Input() maxLabel: string = 'Max price';
   @Input() btnLabel: string = 'Apply';
   @Output() applyBtnClick: EventEmitter<MinMax> = new EventEmitter<MinMax>();
 
@@ -19,10 +19,9 @@ export class PriceSliderComponent implements OnInit {
   maxVal: number = 10000;
 
   ngOnInit(): void {
-    this.minVal = this.min;
-    this.maxVal = this.max;
-    console.log('minVal', this.min);
-    console.log('maxVal', this.max);
+    const diff = this.max - this.min;
+    this.minVal = this.min + 0.2 * diff;
+    this.maxVal = this.max - 0.2 * diff;
   }
 
   applyBtnClicked(): void {

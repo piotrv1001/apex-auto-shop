@@ -38,10 +38,14 @@ export class ProductsComponent implements OnInit {
   }
 
   handlePriceSort(sort: Sort): void {
+    const sortAsc = (a: Product, b: Product) => a.price - b.price;
+    const sortDesc = (a: Product, b: Product) => b.price - a.price;
     if(sort === Sort.ASCENDING) {
-      this.filteredProducts.sort((a: Product, b: Product) => a.price - b.price);
+      this.filteredProducts.sort(sortAsc);
+      this.products.sort(sortAsc);
     } else {
-      this.filteredProducts.sort((a: Product, b: Product) => b.price - a.price);
+      this.filteredProducts.sort(sortDesc);
+      this.products.sort(sortDesc);
     }
   }
 
@@ -52,8 +56,6 @@ export class ProductsComponent implements OnInit {
       this.minVal = Math.min(...this.products.map(product => product.price));
       this.maxVal = Math.max(...this.products.map(product => product.price));
       this.loadingProducts = false;
-      console.log('product min val', this.minVal);
-      console.log('product max val', this.maxVal);
     });
   }
 
