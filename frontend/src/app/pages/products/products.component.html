@@ -1,8 +1,11 @@
 <div class="products">
-  <div *ngFor="let product of products" class="product-item">
+  <app-search-bar
+    (searchQueryChange)="handleSearchQueryChange($event)">
+  </app-search-bar>
+  <div *ngFor="let product of filteredProducts" class="product-item">
     <app-product
-    [product]="product"
-    (productClick)="handleProductClick($event)">
+      [product]="product"
+      (productClick)="handleProductClick($event)">
   </app-product>
   </div>
 

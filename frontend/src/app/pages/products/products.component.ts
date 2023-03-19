@@ -10,11 +10,17 @@ import { ProductService } from "src/app/services/product.service";
 export class ProductsComponent implements OnInit {
 
   products: Product[] = [];
+  filteredProducts: Product[] = [];
 
   constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
     this.getProducts();
+  }
+
+  handleSearchQueryChange(searchQuery: string): void {
+    const queryLowerCase = searchQuery.toLowerCase();
+    this.filteredProducts = this.products.filter(product => product.name.toLowerCase().includes(queryLowerCase) || product.description.toLowerCase().includes(queryLowerCase));
   }
 
   handleProductClick(id: number): void {
@@ -25,6 +31,7 @@ export class ProductsComponent implements OnInit {
   private getProducts(): void {
     this.productService.getAllProducts().subscribe((products: Product[]) => {
       this.products = products;
+      this.filteredProducts = [...products];
     });
   }
 

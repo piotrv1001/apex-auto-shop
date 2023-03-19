@@ -1,3 +1,4 @@
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { ProductComponent } from './components/product/product.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -25,7 +26,8 @@ import { MatCardModule } from '@angular/material/card';
     RegisterComponent,
     HomeComponent,
     ProductComponent,
-    ProductsComponent
+    ProductsComponent,
+    SearchBarComponent
   ],
   imports: [
     BrowserModule,
