@@ -1,0 +1,13 @@
+<div class="row">
+  <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+  <div class="col">
+    <h2>{{ orderItem?.product?.name }}</h2>
+    <p style="color: green;">{{ orderItem?.product?.price | currency }}</p>
+  </div>
+  <div class="row">
+    <button mat-button (click)="decrement()">-</button>
+    <span>{{ orderItem?.amount }}</span>
+    <button mat-button (click)="increment()">+</button>
+  </div>
+  <button mat-button color="warn" (click)="remove()">Remove</button>
+</div>

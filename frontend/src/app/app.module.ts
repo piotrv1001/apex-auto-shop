@@ -1,3 +1,4 @@
+import { CartComponent } from './pages/cart/cart.component';
 import { OrderItemComponent } from './components/order-item/order-item.component';
 import { PriceSorterComponent } from './components/price-sorter/price-sorter.component';
 import { PriceSliderComponent } from './components/price-slider/price-slider.component';
@@ -24,6 +25,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
+import { MatStepperModule } from '@angular/material/stepper';
+import { DeliveryComponent } from './components/delivery/delivery.component';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -36,7 +40,9 @@ import { MatIconModule } from '@angular/material/icon';
     SearchBarComponent,
     PriceSliderComponent,
     PriceSorterComponent,
-    OrderItemComponent
+    OrderItemComponent,
+    CartComponent,
+    DeliveryComponent
   ],
   imports: [
     BrowserModule,
@@ -50,9 +56,12 @@ import { MatIconModule } from '@angular/material/icon';
     MatCardModule,
     MatSliderModule,
     MatSelectModule,
-    MatIconModule
+    MatIconModule,
+    MatStepperModule,
+    NgxMaskDirective,
+    NgxMaskPipe
   ],
-  providers: [httpInterceptorProviders],
+  providers: [httpInterceptorProviders, provideNgxMask()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

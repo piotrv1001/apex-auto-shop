@@ -12,4 +12,16 @@ export class OrderItemComponent {
   @Output() incrementBtnClick: EventEmitter<void> = new EventEmitter<void>();
   @Output() decrementBtnClick: EventEmitter<void> = new EventEmitter<void>();
   @Output() removeBtnClick: EventEmitter<void> = new EventEmitter<void>();
+
+  increment(): void {
+    this.incrementBtnClick.emit();
+  }
+
+  decrement(): void {
+    this.decrementBtnClick.emit();
+  }
+
+  remove(): void {
+    this.removeBtnClick.emit();
+  }
 }
