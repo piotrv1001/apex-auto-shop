@@ -1,3 +1,4 @@
+import { DeliveryData } from './../../model/types/delivery-data';
 import { LocalStorageService } from './../../services/local-storage.service';
 import { Component, OnInit } from "@angular/core";
 import { OrderItem } from "src/app/model/entities/order-item.model";
@@ -19,11 +20,12 @@ export class CartComponent implements OnInit {
     this.getOrderItems();
   }
 
+  handleDeliveryFormSubmisssion(deliveryData: DeliveryData): void {
+    console.log('data', deliveryData);
+  }
+
   getOrderItems(): void {
-    const userIdStr = this.localStorageService.getUserId();
-    if(userIdStr) {
-      const userId = parseInt(userIdStr);
-    }
+    const userId = this.localStorageService.getUserId();
   }
 
   calculateTotal(): number {

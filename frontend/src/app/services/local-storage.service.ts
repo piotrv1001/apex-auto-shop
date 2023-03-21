@@ -5,8 +5,9 @@ import { Injectable } from "@angular/core";
 })
 export class LocalStorageService {
 
-  getUserId(): string | null {
-    return localStorage.getItem('id');
+  getUserId(): number | null {
+    const userIdStr =  localStorage.getItem('id');
+    return userIdStr ? parseInt(userIdStr) : null;
   }
 
   saveUserId(id: number): void {

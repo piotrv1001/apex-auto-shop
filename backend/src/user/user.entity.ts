@@ -4,13 +4,13 @@ import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 @Entity({ name: 'user' })
 export class User {
   @PrimaryGeneratedColumn()
-  id: number;
+  id?: number;
 
-  @Column()
-  username: string;
+  @Column({ nullable: true })
+  username?: string;
 
-  @Column()
-  password: string;
+  @Column({ nullable: true })
+  password?: string;
 
   @Column({ nullable: true })
   email?: string;
@@ -30,6 +30,9 @@ export class User {
   @Column({ nullable: true })
   houseNumber?: string;
 
-  @OneToMany(() => Order, (order) => order.user)
-  orders: Order[];
+  @Column({ nullable: true })
+  phoneNumber?: string;
+
+  @OneToMany(() => Order, (order) => order.user, { nullable: true })
+  orders?: Order[];
 }

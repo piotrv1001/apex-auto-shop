@@ -33,6 +33,10 @@ export class UserService {
     return this.userRepository.findOneBy({ username: username });
   }
 
+  async partialUpdate(user: User): Promise<User> {
+    return this.userRepository.save(user);
+  }
+
   async delete(id: number): Promise<void> {
     await this.userRepository.delete(id);
   }

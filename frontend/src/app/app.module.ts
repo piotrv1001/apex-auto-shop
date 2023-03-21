@@ -1,3 +1,4 @@
+import { AccountComponent } from './pages/account/account.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { OrderItemComponent } from './components/order-item/order-item.component';
 import { PriceSorterComponent } from './components/price-sorter/price-sorter.component';
@@ -26,6 +27,9 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { MatStepperModule } from '@angular/material/stepper';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
+
 import { DeliveryComponent } from './components/delivery/delivery.component';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
@@ -42,7 +46,8 @@ import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
     PriceSorterComponent,
     OrderItemComponent,
     CartComponent,
-    DeliveryComponent
+    DeliveryComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule,
@@ -58,6 +63,7 @@ import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
     MatSelectModule,
     MatIconModule,
     MatStepperModule,
+    MatSnackBarModule,
     NgxMaskDirective,
     NgxMaskPipe
   ],

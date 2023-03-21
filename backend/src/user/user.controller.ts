@@ -1,5 +1,5 @@
 import { UserService } from './user.service';
-import { Controller, Delete, Get, Param } from '@nestjs/common';
+import { Controller, Delete, Get, Param, Patch, Request } from '@nestjs/common';
 import { User } from './user.entity';
 
 @Controller('users')
@@ -14,6 +14,11 @@ export class UserController {
   @Get(':id')
   getById(@Param('id') id: number): Promise<User> {
     return this.userService.getById(id);
+  }
+
+  @Patch()
+  partialUpdate(@Request() req): Promise<User> {
+    return this.userService.partialUpdate(req.body);
   }
 
   @Delete(':id')
