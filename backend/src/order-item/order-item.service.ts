@@ -10,10 +10,6 @@ export class OrderItemService {
     private readonly orderItemRepository: Repository<OrderItem>,
   ) {}
 
-  async create(userId: number, productId: number): Promise<OrderItem> {
-    throw new Error('TODO');
-  }
-
   async getAll(): Promise<OrderItem[]> {
     return this.orderItemRepository.find();
   }
@@ -23,6 +19,10 @@ export class OrderItemService {
       productId: productId,
       orderId: orderId,
     });
+  }
+
+  async partialUpdate(orderItem: OrderItem): Promise<OrderItem> {
+    return this.orderItemRepository.save(orderItem);
   }
 
   async delete(id: number): Promise<void> {

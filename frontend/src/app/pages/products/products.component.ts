@@ -1,8 +1,12 @@
+import { OrderItem } from './../../model/entities/order-item.model';
+import { LocalStorageService } from './../../services/local-storage.service';
 import { Sort } from './../../model/types/sort';
 import { MinMax } from './../../model/types/min-max';
 import { Component, OnInit } from "@angular/core";
 import { Product } from "src/app/model/entities/product.model";
 import { ProductService } from "src/app/services/product.service";
+import { CartService } from 'src/app/services/cart.service';
+import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-products',
@@ -17,7 +21,10 @@ export class ProductsComponent implements OnInit {
   maxVal: number = 10000;
   loadingProducts = true;
 
-  constructor(private productService: ProductService) {}
+  constructor(
+    private productService: ProductService,
+    private localStorageService: LocalStorageService,
+    private cartService: CartService) {}
 
   ngOnInit(): void {
     this.getProducts();
@@ -32,9 +39,21 @@ export class ProductsComponent implements OnInit {
     this.filteredProducts = this.products.filter(product => product.price >= minMax.min && product.price <= minMax.max);
   }
 
-  handleProductClick(id: number): void {
-    const product = this.products.find(product => product.id === id);
-    console.log('product', product);
+  handleProductClick(productId: number): void {
+    const userId = this.localStorageService.getUserId();
+    if(userId) {
+      this.cartService.addItemToCart(productId, userId).pipe(
+        switchMap((orderItem: OrderItem) => this.cartService.getAmountForOrder(orderItem.orderId))
+      ).subscribe(amount => {
+        console.log('amount', amount);
+        this.cartService.notifyAboutCartItemAmount(amount);
+      })
+      // this.cartService.addItemToCart(productId, userId).subscribe({
+      //   next: (orderItem: OrderItem) => {
+      //     console.log('orderItem', orderItem);
+      //   }
+      // })
+    }
   }
 
   handlePriceSort(sort: Sort): void {

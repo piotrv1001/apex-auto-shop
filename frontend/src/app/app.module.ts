@@ -29,6 +29,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatBadgeModule } from '@angular/material/badge';
 
 
 import { DeliveryComponent } from './components/delivery/delivery.component';
@@ -67,7 +68,8 @@ import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
     MatSnackBarModule,
     NgxMaskDirective,
     NgxMaskPipe,
-    MatDividerModule
+    MatDividerModule,
+    MatBadgeModule
   ],
   providers: [httpInterceptorProviders, provideNgxMask()],
   bootstrap: [AppComponent]

@@ -1,4 +1,4 @@
-import { Controller, Delete, Get, Param, Post, Query } from '@nestjs/common';
+import { Controller, Delete, Get, Param, Patch, Request } from '@nestjs/common';
 import { OrderItemService } from './order-item.service';
 import { OrderItem } from './order-item.entity';
 
@@ -6,17 +6,14 @@ import { OrderItem } from './order-item.entity';
 export class OrderItemController {
   constructor(private readonly orderItemService: OrderItemService) {}
 
-  @Post()
-  create(
-    @Query('userId') userId: number,
-    @Query('productId') productId: number,
-  ): Promise<OrderItem> {
-    return this.orderItemService.create(userId, productId);
-  }
-
   @Get()
   getAll(): Promise<OrderItem[]> {
     return this.orderItemService.getAll();
+  }
+
+  @Patch()
+  partialUpdate(@Request() req): Promise<OrderItem> {
+    return this.orderItemService.partialUpdate(req.body);
   }
 
   @Delete(':id')

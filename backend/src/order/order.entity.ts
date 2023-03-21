@@ -41,6 +41,9 @@ export class Order {
   @ManyToOne(() => User, (user) => user.orders, { nullable: true })
   user?: Relation<User>;
 
+  @Column({ nullable: true })
+  userId?: number;
+
   @OneToMany(() => OrderItem, (orderItem) => orderItem.order, {
     nullable: true,
   })

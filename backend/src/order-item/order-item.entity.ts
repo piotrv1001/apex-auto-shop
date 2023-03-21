@@ -17,5 +17,5 @@ export class OrderItem {
   product?: Relation<Product>;
 
   @ManyToOne(() => Order, (order) => order.orderItems, { nullable: true })
-  order: Relation<Order>;
+  order?: Relation<Order>;
 }

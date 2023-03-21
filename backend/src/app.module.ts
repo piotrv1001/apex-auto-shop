@@ -1,5 +1,4 @@
-import { OrderItemModule } from './order-item/order-item.module';
-import { OrderModule } from './order/order.module';
+import { CartModule } from './cart/cart.module';
 import { CategoryModule } from './category/category.module';
 import { ProductModule } from './product/product.module';
 import { Category } from './category/category.entity';
@@ -35,8 +34,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
     AuthModule,
     ProductModule,
     CategoryModule,
-    OrderModule,
-    OrderItemModule,
+    CartModule,
   ],
   controllers: [AppController],
   providers: [AppService],
