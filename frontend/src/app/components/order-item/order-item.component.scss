@@ -1,8 +1,12 @@
 .row {
   display: flex;
+  margin: 1rem;
+  align-items: center;
 }
 
 .col {
   display: flex;
   flex-direction: column;
+  align-self: flex-start;
+  padding-left: 1rem;
 }

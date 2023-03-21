@@ -26,8 +26,8 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.authService.isAuthenticated().subscribe({
       next: (payload: JwtPayload) => {
-        this.isAuthenticated = true;
         this.localStorageService.saveUserId(payload.id);
+        this.isAuthenticated = true;
       },
       error: (error) => {
         this.isAuthenticated = false;

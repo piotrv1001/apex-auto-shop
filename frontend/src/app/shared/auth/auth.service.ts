@@ -8,6 +8,7 @@ import { User } from 'src/app/model/entities/user.model';
 
 type JwtToken = {
   access_token: string;
+  id: number;
 };
 
 @Injectable({
@@ -55,7 +56,8 @@ export class AuthService {
   }
 
   private authenticateSuccess(response: JwtToken): void {
-    const jwt = response.access_token;
-    localStorage.setItem('token', jwt);
+    const { access_token, id } = response;
+    localStorage.setItem('token', access_token);
+    localStorage.setItem('id', id.toString());
   }
 }

@@ -41,9 +41,9 @@ export class LoginComponent implements OnInit {
       next: () => {
         this.authService.authenticate();
       },
-      error: () => {
+      error: (error) => {
         this.areCredentialsCorrect = false;
-        console.log('Invalid username or password');
+        console.log(error);
       }
     });
   }
