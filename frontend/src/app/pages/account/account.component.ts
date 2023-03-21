@@ -41,19 +41,29 @@ export class AccountComponent implements OnInit {
 
   private updateUserDeliveryData(deliveryData: DeliveryData): void {
     const userId = this.localStorageService.getUserId();
-    if(userId && deliveryData.address) {
+    if(userId) {
+      let user;
       const { name, email, phoneNumber } = deliveryData;
-      const { city, street, houseNumber, zipCode } = deliveryData.address;
-      const user = {
-        id: userId,
-        city,
-        street,
-        houseNumber,
-        zipCode,
-        name,
-        email,
-        phoneNumber
-      };
+      if(deliveryData.address) {
+        const { city, street, houseNumber, zipCode } = deliveryData.address;
+        user = {
+          id: userId,
+          city,
+          street,
+          houseNumber,
+          zipCode,
+          name,
+          email,
+          phoneNumber
+        };
+      } else {
+        user = {
+          id: userId,
+          name,
+          email,
+          phoneNumber
+        };
+      }
       this.userService.partialUpdate(user).subscribe({
         next: () => {
           const message = 'Your data has been updated!';
@@ -65,7 +75,6 @@ export class AccountComponent implements OnInit {
         }
       });
     }
-
   }
 
 }

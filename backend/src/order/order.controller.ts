@@ -21,18 +21,16 @@ export class OrderController {
   }
 
   @Get()
-  getAll(): Promise<Order[]> {
-    return this.orderService.getAll();
+  getByUserId(
+    @Query('userId') userId: number,
+    @Query('active') active: string,
+  ): Promise<Order[]> {
+    return this.orderService.getByUserId(userId, active);
   }
 
   @Get(':id')
   getById(@Param('id') id: number): Promise<Order> {
     return this.orderService.getById(id);
-  }
-
-  @Get()
-  getByUserId(@Query('userId') userId: number): Promise<Order[]> {
-    return this.orderService.getByUserId(userId);
   }
 
   @Delete(':id')

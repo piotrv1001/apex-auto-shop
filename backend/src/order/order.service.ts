@@ -1,11 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { FindManyOptions, Repository } from 'typeorm';
+import { Repository } from 'typeorm';
 import { OrderDTO } from './order.dto';
 import { Order } from './order.entity';
 
 const relationshipNames = [];
 relationshipNames.push('user');
+relationshipNames.push('orderItems');
 
 @Injectable()
 export class OrderService {
@@ -26,20 +27,30 @@ export class OrderService {
     return this.orderRepository.save(order);
   }
 
-  async getAll(): Promise<Order[]> {
-    return this.orderRepository.find();
-  }
-
   async getById(id: number): Promise<Order> {
     return this.orderRepository.findOneBy({ id: id });
   }
 
-  async getByUserId(userId: number): Promise<Order[]> {
-    const options: FindManyOptions = {
-      relations: relationshipNames,
-      where: { user: { id: userId } },
-    };
-    return await this.orderRepository.find(options);
+  async getByUserId(
+    userId: number | undefined,
+    active: string | undefined,
+  ): Promise<Order[]> {
+    if (userId) {
+      return await this.orderRepository.find({
+        relations: {
+          orderItems: {
+            product: true,
+          },
+        },
+        where: {
+          active: active === 'true' ? true : false,
+          user: {
+            id: userId,
+          },
+        },
+      });
+    }
+    return await this.orderRepository.find();
   }
 
   async delete(id: number): Promise<void> {

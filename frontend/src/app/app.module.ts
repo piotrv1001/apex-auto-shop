@@ -28,6 +28,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDividerModule } from '@angular/material/divider';
 
 
 import { DeliveryComponent } from './components/delivery/delivery.component';
@@ -65,7 +66,8 @@ import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
     MatStepperModule,
     MatSnackBarModule,
     NgxMaskDirective,
-    NgxMaskPipe
+    NgxMaskPipe,
+    MatDividerModule
   ],
   providers: [httpInterceptorProviders, provideNgxMask()],
   bootstrap: [AppComponent]

@@ -5,19 +5,20 @@ import {
   PrimaryGeneratedColumn,
   ManyToOne,
   OneToMany,
+  Relation,
 } from 'typeorm';
 import { OrderItem } from 'src/order-item/order-item.entity';
 
 @Entity({ name: 'order' })
 export class Order {
   @PrimaryGeneratedColumn()
-  id: number;
+  id?: number;
 
-  @Column()
-  date: Date;
+  @Column({ nullable: true })
+  date?: Date;
 
-  @Column()
-  phoneNumber: string;
+  @Column({ nullable: true })
+  phoneNumber?: string;
 
   @Column({ nullable: true })
   zipCode?: string;
@@ -34,9 +35,14 @@ export class Order {
   @Column({ nullable: true })
   name?: string;
 
-  @ManyToOne(() => User, (user) => user.orders, { nullable: true })
-  user?: User;
+  @Column({ nullable: true, default: true })
+  active?: boolean;
 
-  @OneToMany(() => OrderItem, (orderItem) => orderItem.order)
-  orderItems: OrderItem[];
+  @ManyToOne(() => User, (user) => user.orders, { nullable: true })
+  user?: Relation<User>;
+
+  @OneToMany(() => OrderItem, (orderItem) => orderItem.order, {
+    nullable: true,
+  })
+  orderItems?: Relation<OrderItem[]>;
 }

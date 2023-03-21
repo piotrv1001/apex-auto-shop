@@ -1,4 +1,4 @@
-<mat-card (click)="productClicked()" class="product-card">
+<mat-card class="product-card">
   <mat-card-header>
     <mat-card-title>{{ product?.name }}</mat-card-title>
   </mat-card-header>
@@ -7,6 +7,10 @@
     <p>{{ product?.description }}</p>
     <p class="price">{{ product?.price | currency }}</p>
   </mat-card-content>
+  <mat-divider></mat-divider>
+  <mat-card-actions>
+    <button mat-button color="accent" (click)="productClicked()">Add to cart <mat-icon>shopping_cart</mat-icon></button>
+  </mat-card-actions>
 </mat-card>
 
 
