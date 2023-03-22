@@ -1,9 +1,16 @@
 <mat-stepper linear orientation="horizontal">
   <mat-step label="Cart" [completed]="false">
-    <app-order-item *ngFor="let orderItem of orderItems" [orderItem]="orderItem"></app-order-item>
+    <app-order-item *ngFor="let orderItem of orderItems"
+      [orderItem]="orderItem"
+      (incrementBtnClick)="handleIncrement($event)"
+      (decrementBtnClick)="handleDecrement($event)"
+      (removeBtnClick)="handleRemove($event)">
+    </app-order-item>
   </mat-step>
   <mat-step label="Delivery">
     <app-delivery (submit)="handleDeliveryFormSubmisssion($event)"></app-delivery>
   </mat-step>
-  <mat-step label="Payment"></mat-step>
+  <mat-step label="Payment">
+    <app-payment></app-payment>
+  </mat-step>
 </mat-stepper>

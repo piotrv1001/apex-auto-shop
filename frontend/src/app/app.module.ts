@@ -34,6 +34,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 
 import { DeliveryComponent } from './components/delivery/delivery.component';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
+import { PaymentComponent } from './components/payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
     OrderItemComponent,
     CartComponent,
     DeliveryComponent,
-    AccountComponent
+    AccountComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,

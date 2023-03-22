@@ -1,4 +1,4 @@
-import { Controller, Delete, Get, Param, Patch, Request } from '@nestjs/common';
+import { Controller, Delete, Get, Patch, Request, Query } from '@nestjs/common';
 import { OrderItemService } from './order-item.service';
 import { OrderItem } from './order-item.entity';
 
@@ -16,8 +16,11 @@ export class OrderItemController {
     return this.orderItemService.partialUpdate(req.body);
   }
 
-  @Delete(':id')
-  delete(@Param('id') id: number): Promise<void> {
-    return this.orderItemService.delete(id);
+  @Delete()
+  delete(
+    @Query('productId') productId: number,
+    @Query('orderId') orderId: number,
+  ): Promise<void> {
+    return this.orderItemService.delete(productId, orderId);
   }
 }

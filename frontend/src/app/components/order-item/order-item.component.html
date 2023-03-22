@@ -5,7 +5,7 @@
     <p style="color: green;">{{ orderItem?.product?.price | currency }}</p>
   </div>
   <div class="row">
-    <button mat-button (click)="decrement()">-</button>
+    <button mat-button (click)="decrement()" [disabled]="orderItem?.amount === 1">-</button>
     <span style="margin: 0 0.5rem;">{{ orderItem?.amount }}</span>
     <button mat-button (click)="increment()">+</button>
   </div>

@@ -25,7 +25,10 @@ export class OrderItemService {
     return this.orderItemRepository.save(orderItem);
   }
 
-  async delete(id: number): Promise<void> {
-    await this.orderItemRepository.delete(id);
+  async delete(productId: number, orderId: number): Promise<void> {
+    await this.orderItemRepository.delete({
+      productId: productId,
+      orderId: orderId,
+    });
   }
 }
