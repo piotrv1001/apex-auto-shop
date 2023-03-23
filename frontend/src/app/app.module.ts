@@ -31,6 +31,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 
 import { DeliveryComponent } from './components/delivery/delivery.component';
@@ -73,7 +74,8 @@ import { PaymentComponent } from './components/payment/payment.component';
     NgxMaskPipe,
     MatDividerModule,
     MatBadgeModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatProgressBarModule
   ],
   providers: [httpInterceptorProviders, provideNgxMask()],
   bootstrap: [AppComponent]
