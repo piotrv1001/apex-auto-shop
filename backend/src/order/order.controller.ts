@@ -5,8 +5,10 @@ import {
   Delete,
   Get,
   Param,
+  Patch,
   Post,
   Query,
+  Request,
 } from '@nestjs/common';
 import { OrderService } from './order.service';
 import { Order } from './order.entity';
@@ -31,6 +33,11 @@ export class OrderController {
   @Get(':id')
   getById(@Param('id') id: number): Promise<Order> {
     return this.orderService.getById(id);
+  }
+
+  @Patch()
+  partialUpdate(@Request() req): Promise<Order> {
+    return this.orderService.partialUpdate(req.body);
   }
 
   @Delete(':id')

@@ -5,6 +5,7 @@ import { OrderItem } from "src/app/model/entities/order-item.model";
 import { OrderService } from 'src/app/services/order.service';
 import { OrderItemSerive } from 'src/app/services/order-item.service';
 import { CartService } from 'src/app/services/cart.service';
+import { Order } from 'src/app/model/entities/order.model';
 
 @Component({
   selector: 'app-cart',
@@ -14,6 +15,7 @@ import { CartService } from 'src/app/services/cart.service';
 export class CartComponent implements OnInit {
 
   orderItems: OrderItem[] = [];
+  order?: Order;
 
   constructor(
     private localStorageService: LocalStorageService,
@@ -46,15 +48,29 @@ export class CartComponent implements OnInit {
   }
 
   handleDeliveryFormSubmisssion(deliveryData: DeliveryData): void {
-    console.log('data', deliveryData);
+    if(this.order) {
+      const { name, email, phoneNumber, address } = deliveryData;
+      if(address) {
+        const { street, zipCode, city, houseNumber } = address;
+        this.order.street = street;
+        this.order.zipCode = zipCode;
+        this.order.city = city;
+        this.order.houseNumber = houseNumber;
+      }
+      this.order.name = name;
+      this.order.email = email;
+      this.order.phoneNumber = phoneNumber;
+      this.order.name = name;
+      this.orderUpdate(this.order);
+    }
   }
 
   getOrderItems(): void {
     const userId = this.localStorageService.getUserId();
     if(userId) {
       this.orderService.getOrdersForUser(userId, true).subscribe(orders => {
-        const order = orders[0];
-        this.orderItems = order.orderItems;
+        this.order = orders[0];
+        this.orderItems = this.order.orderItems ?? [];
       })
     }
   }
@@ -67,5 +83,12 @@ export class CartComponent implements OnInit {
     this.orderItemService.partialUpdate(orderItem).subscribe(updatedOrderItem => {
       console.log('updated', updatedOrderItem);
     });
+  }
+
+  private orderUpdate(order: Order): void {
+    console.log('order', order);
+    this.orderService.partialUpdate(order).subscribe(updatedOrder => {
+      this.order = updatedOrder;
+    })
   }
 }

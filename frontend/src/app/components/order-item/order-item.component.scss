@@ -1,3 +1,10 @@
+.grid-row {
+  display: grid;
+  width: max-content;
+  grid-template-columns: repeat(2, 1fr) 2fr;
+  margin: 1rem 0;
+}
+
 .row {
   display: flex;
   margin: 1rem;

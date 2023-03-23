@@ -1,11 +1,12 @@
-<mat-stepper linear orientation="horizontal">
-  <mat-step label="Cart" [completed]="false">
+<mat-stepper linear orientation="horizontal" #stepper>
+  <mat-step label="Cart">
     <app-order-item *ngFor="let orderItem of orderItems"
       [orderItem]="orderItem"
       (incrementBtnClick)="handleIncrement($event)"
       (decrementBtnClick)="handleDecrement($event)"
       (removeBtnClick)="handleRemove($event)">
     </app-order-item>
+    <button mat-raised-button color="accent" matStepperNext>Next</button>
   </mat-step>
   <mat-step label="Delivery">
     <app-delivery (submit)="handleDeliveryFormSubmisssion($event)"></app-delivery>

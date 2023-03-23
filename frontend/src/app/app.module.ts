@@ -30,6 +30,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 import { DeliveryComponent } from './components/delivery/delivery.component';
@@ -71,7 +72,8 @@ import { PaymentComponent } from './components/payment/payment.component';
     NgxMaskDirective,
     NgxMaskPipe,
     MatDividerModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatTooltipModule
   ],
   providers: [httpInterceptorProviders, provideNgxMask()],
   bootstrap: [AppComponent]

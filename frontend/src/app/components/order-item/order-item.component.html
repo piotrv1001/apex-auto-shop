@@ -1,4 +1,4 @@
-<div class="row">
+<div class="grid-row">
   <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu" width="200">
   <div class="col">
     <h2>{{ orderItem?.product?.name }}</h2>
@@ -6,8 +6,8 @@
   </div>
   <div class="row">
     <button mat-button (click)="decrement()" [disabled]="orderItem?.amount === 1">-</button>
-    <span style="margin: 0 0.5rem;">{{ orderItem?.amount }}</span>
+    <span style="margin: 0 .5rem;">{{ orderItem?.amount }}</span>
     <button mat-button (click)="increment()">+</button>
+    <button mat-button color="warn" (click)="remove()">Remove</button>
   </div>
-  <button mat-button color="warn" (click)="remove()">Remove</button>
 </div>

@@ -17,4 +17,8 @@ export class OrderService {
     const activeStr = active ? 'true' : 'false';
     return this.http.get<Order[]>(`${BASE_URL}/${this.ORDER_ROUTE}?userId=${userId}&active=${activeStr}`);
   }
+
+  partialUpdate(order: Order): Observable<Order> {
+    return this.http.patch<Order>(`${BASE_URL}/${this.ORDER_ROUTE}`, order);
+  }
 }

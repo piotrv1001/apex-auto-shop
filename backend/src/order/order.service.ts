@@ -53,6 +53,10 @@ export class OrderService {
     return await this.orderRepository.find();
   }
 
+  async partialUpdate(order: Order): Promise<Order> {
+    return this.orderRepository.save(order);
+  }
+
   async delete(id: number): Promise<void> {
     await this.orderRepository.delete(id);
   }

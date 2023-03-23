@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
     const userId = this.localStorageService.getUserId();
     if(userId) {
       this.orderService.getOrdersForUser(userId, true).subscribe(orders => {
-        this.cartService.notifyAboutCartItemAmount(orders[0].orderItems.length);
+        this.cartService.notifyAboutCartItemAmount(orders[0]?.orderItems?.length ?? 0);
       })
     }
   }
