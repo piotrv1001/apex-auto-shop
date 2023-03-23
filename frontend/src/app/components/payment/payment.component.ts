@@ -7,4 +7,9 @@ import { Component } from "@angular/core";
 })
 export class PaymentComponent {
 
+  selectedCardIndex = -1;
+
+  updateCardIndex(index: number): void {
+    this.selectedCardIndex = index;
+  }
 }

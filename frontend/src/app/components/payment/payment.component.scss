@@ -1,0 +1,68 @@
+.payment-card {
+  margin-top: 2rem;
+}
+
+.credit-card-row {
+  display: flex;
+  align-items: center;
+}
+
+.credit-card-item {
+  width: 8%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: .5px solid #d3d3d3;
+  border-radius: 5px;
+  margin-right: 2rem;
+  padding: 1rem;
+
+  img {
+    width: 70%;
+    height: auto;
+  }
+}
+
+.credit-card-item:hover {
+  cursor: pointer;
+}
+
+.unselected-card:hover {
+  background-color: #d3d3d3;
+}
+
+.mat-badge-content {
+  font-family: 'Material Icons';
+}
+
+.selected-card {
+  background-color: rgba(63, 81, 181, 0.2);
+  border: 2px solid #3f51b5;
+}
+
+.payment-grid {
+  display: grid;
+  width: 60%;
+  margin-top: 1rem;
+  grid-template-columns: 3fr repeat(2, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-column-gap: 15px;
+  grid-row-gap: 5px;
+}
+
+.div1 { grid-area: 1 / 1 / 2 / 4; }
+.div2 { grid-area: 2 / 1 / 3 / 4; }
+.div3 { grid-area: 3 / 1 / 4 / 2; }
+.div4 { grid-area: 3 / 2 / 4 / 3; }
+.div5 { grid-area: 3 / 3 / 4 / 4; }
+.div6 { grid-area: 4 / 1 / 5 / 2; }
+.div7 { grid-area: 4 / 2 / 5 / 3; }
+.div8 { grid-area: 4 / 3 / 5 / 4; }
+
+.align-center {
+  display: flex;
+  align-items: center;
+}
+
+
