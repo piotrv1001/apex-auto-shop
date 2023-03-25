@@ -1,17 +1,29 @@
-<form *ngIf="loginForm !== undefined" [formGroup]="loginForm" class="login-form ">
-  <mat-form-field>
-    <input
-      matInput
-      placeholder="Your username"
-      formControlName="username">
-  </mat-form-field>
-  <mat-form-field>
-    <input
-      matInput
-      placeholder="Your password"
-      formControlName="password">
-  </mat-form-field>
-  <button mat-raised-button color="primary" (click)="login()">Login</button>
-  <span *ngIf="!areCredentialsCorrect" style="color: red; margin-top: 1rem;">Invalid username or password</span>
-  <div style="margin-top: 1rem;"><button mat-button color="accent" (click)="registerBtnClicked()">Don't have an account?</button></div>
-</form>
+<div class="wrapper">
+  <div class="login-card">
+    <div class="login-heading">Login</div>
+    <form *ngIf="loginForm !== undefined" [formGroup]="loginForm" class="login-form ">
+      <mat-form-field class="login-form-field">
+        <input
+          matInput
+          placeholder="Your username"
+          formControlName="username">
+      </mat-form-field>
+      <mat-form-field class="login-form-field">
+        <input
+          type="password"
+          matInput
+          placeholder="Your password"
+          formControlName="password">
+      </mat-form-field>
+      <button class="login-btn" (click)="login()">Login</button>
+      <span *ngIf="!areCredentialsCorrect" style="color: red; margin-top: 1rem;">Invalid username or password</span>
+      <div class="login-options">
+        <div class="login-circle"><img class="login-icon" src="../../../assets/img/google-logo.png" alt="Google"></div>
+        <div class="login-circle"><img class="login-icon" src="../../../assets/img/Facebook_Logo_(2019).png.webp" alt="Facebook"></div>
+        <div class="login-circle"><img class="login-icon" src="../../../assets/img/Twitter-logo.svg.png" alt="Twitter"></div>
+      </div>
+      <button class="no-account-btn" mat-button (click)="registerBtnClicked()">Don't have an account?</button>
+    </form>
+  </div>
+</div>
+
