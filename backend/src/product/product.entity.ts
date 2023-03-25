@@ -22,6 +22,9 @@ export class Product {
   @Column()
   price: number;
 
+  @Column()
+  stars: number;
+
   @ManyToOne(() => Category, (category) => category.products)
   category: Category;
 
