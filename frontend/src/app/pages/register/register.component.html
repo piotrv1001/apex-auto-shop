@@ -1,16 +1,30 @@
-<form *ngIf="registerForm !== undefined" [formGroup]="registerForm" class="register-form ">
-  <mat-form-field>
-    <input
-      matInput
-      placeholder="Your username"
-      formControlName="username">
-  </mat-form-field>
-  <mat-form-field>
-    <input
-      matInput
-      placeholder="Your username"
-      formControlName="password">
-  </mat-form-field>
-  <button mat-raised-button color="accent" (click)="register()">Register</button>
-  <div style="margin-top: 1rem;"><button mat-button color="primary" (click)="loginBtnClicked()">Already have an account? Sign in</button></div>
-</form>
+<div class="wrapper">
+  <div class="login-card">
+    <div class="login-heading">Create an account</div>
+    <form *ngIf="registerForm !== undefined" [formGroup]="registerForm" class="login-form ">
+      <mat-form-field class="login-form-field">
+        <input
+          matInput
+          placeholder="Your username"
+          formControlName="username">
+      </mat-form-field>
+      <mat-form-field class="login-form-field">
+        <input
+          type="password"
+          matInput
+          placeholder="Your password"
+          formControlName="password">
+      </mat-form-field>
+      <mat-form-field class="login-form-field">
+        <input
+          type="password"
+          matInput
+          placeholder="Confirm password"
+          formControlName="confirmPassword">
+      </mat-form-field>
+      <button class="login-btn" (click)="register()">Register</button>
+      <span *ngIf="!doPasswordsMatch" style="color: red; margin-top: 1rem;">Passwords need to match</span>
+      <button class="no-account-btn" mat-button (click)="loginBtnClicked()">Already have an account? Sign in</button>
+    </form>
+  </div>
+</div>
