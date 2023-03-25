@@ -1,5 +1,6 @@
 .wrapper {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
@@ -11,10 +12,18 @@
 }
 
 .panel {
+  background-color: #333;
   width: 100%;
   display: flex;
-  flex-direction: column;
-  padding: 1rem;
+  justify-content: center;
+  align-items: center;
+
+  .panel-content {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    width: 50%;
+  }
 
   .panel-row {
     display: flex;
@@ -35,4 +44,8 @@
 .panel-item {
   width: 50%;
   margin: 0 1rem;
+}
+
+.search-item {
+  width: 100%;
 }

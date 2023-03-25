@@ -9,7 +9,7 @@ export type SortingOption = {
 @Component({
   selector: 'app-price-sorter',
   templateUrl: './price-sorter.component.html',
-  styleUrls: ['./price-sorter.component.scss']
+  styleUrls: ['./price-sorter.component.scss', '../price-slider/price-slider.component.scss']
 })
 export class PriceSorterComponent implements OnInit {
 

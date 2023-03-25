@@ -1,4 +1,5 @@
 .product-card {
+  overflow: hidden;
   width: 100%;
   background-color: white;
   border-radius: 0.5rem;
@@ -22,10 +23,20 @@
   color: black;
 }
 
+.img-container {
+  height: 300px;
+  overflow: hidden;
+}
+
 .product-img {
   width: 100%;
   border-top-right-radius: .5em;
   border-top-left-radius: .5em;
+  transition: transform .25s ease;
+}
+
+.product-img:hover {
+  transform: scale(1.1);
 }
 
 .add-to-cart-btn {

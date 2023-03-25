@@ -1,5 +1,7 @@
 <div class="product-card">
-  <img class="product-img" src="../../../assets/img/lambo.png" alt="Lambo">
+  <div class="img-container">
+    <img class="product-img" [src]="'../../../assets/img/' + product?.imgUrl" alt="Lambo">
+  </div>
   <div class="product-content">
     <p class="product-name">{{ product?.name }}</p>
     <p class="price">{{ product?.price | currency }}</p>

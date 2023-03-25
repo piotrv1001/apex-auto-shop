@@ -1,8 +1,8 @@
 <div class="wrapper">
-  <div class="products">
-    <div class="panel">
+  <div class="panel">
+    <div class="panel-content">
       <app-search-bar
-        class="panel-item"
+        class="panel-item search-item"
         (searchQueryChange)="handleSearchQueryChange($event)">
       </app-search-bar>
       <div class="panel-row">
@@ -18,6 +18,8 @@
         </app-price-sorter>
       </div>
     </div>
+  </div>
+  <div class="products">
     <div class="product-list">
       <div *ngFor="let product of filteredProducts" class="product-item">
         <app-product

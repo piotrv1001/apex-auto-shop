@@ -9,9 +9,9 @@
       <input matInput type="number" [(ngModel)]="maxVal">
     </mat-form-field>
   </div>
-  <mat-slider [min]="min" [max]="max">
+  <mat-slider [min]="min" [max]="max" color="primary">
     <input [(ngModel)]="minVal" matSliderStartThumb>
     <input [(ngModel)]="maxVal" matSliderEndThumb>
   </mat-slider>
-  <button mat-raised-button color="primary" (click)="applyBtnClicked()">{{ btnLabel }}</button>
+  <button class="apply-btn" (click)="applyBtnClicked()">{{ btnLabel }}</button>
 </div>

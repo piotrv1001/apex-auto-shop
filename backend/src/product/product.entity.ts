@@ -25,6 +25,9 @@ export class Product {
   @Column()
   stars: number;
 
+  @Column()
+  imgUrl: string;
+
   @ManyToOne(() => Category, (category) => category.products)
   category: Category;
 

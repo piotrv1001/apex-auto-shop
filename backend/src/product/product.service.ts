@@ -17,6 +17,7 @@ export class ProductService {
     product.description = productDTO.description;
     product.price = productDTO.price;
     product.stars = productDTO.stars;
+    product.imgUrl = productDTO.imgUrl;
     return this.productRepository.save(product);
   }
 
