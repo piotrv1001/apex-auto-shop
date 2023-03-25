@@ -8,7 +8,7 @@ import { UserService } from "src/app/services/user.service";
 @Component({
   selector: 'app-delivery',
   templateUrl: './delivery.component.html',
-  styleUrls: ['./delivery.component.scss']
+  styleUrls: ['./delivery.component.scss', '../../pages/login/login.component.scss']
 })
 export class DeliveryComponent implements OnInit {
 
