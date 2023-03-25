@@ -2,26 +2,30 @@
   <div class="panel">
     <div class="panel-content">
       <app-search-bar
-        class="panel-item search-item"
+        class="search-item"
         (searchQueryChange)="handleSearchQueryChange($event)">
       </app-search-bar>
       <div class="panel-row">
         <app-price-slider *ngIf="!loadingProducts"
-          class="panel-item"
+          class="panel-item left-panel"
           [min]="minVal"
           [max]="maxVal"
           (applyBtnClick)="handleApplyBtnClick($event)">
         </app-price-slider>
-        <app-price-sorter
-          class="panel-item"
-          (priceSort)="handlePriceSort($event)">
-        </app-price-sorter>
+        <div class="panel-col panel-item right-panel">
+          <div class="search-item">
+            <app-price-sorter
+              (priceSort)="handlePriceSort($event)">
+            </app-price-sorter>
+          </div>
+          <button class="reset-btn" (click)="handleReset()">Reset</button>
+        </div>
       </div>
     </div>
   </div>
   <div class="products">
     <div class="product-list">
-      <div *ngFor="let product of filteredProducts" class="product-item">
+      <div *ngFor="let product of filteredProducts">
         <app-product
           [product]="product"
           (productClick)="handleProductClick($event)">

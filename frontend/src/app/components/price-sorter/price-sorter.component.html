@@ -1,12 +1,11 @@
 <div class="wrapper">
   <mat-form-field appearance="fill">
     <mat-label>{{ sortLabel }}</mat-label>
-    <mat-select [(ngModel)]="selectedOption" name="option">
+    <mat-select [(ngModel)]="selectedOption" name="option" (selectionChange)="onPriceSortSelected($event.value)">
       <mat-option *ngFor="let option of sortingOptions" [value]="option">
         {{option.label}}
       </mat-option>
     </mat-select>
   </mat-form-field>
-  <button class="apply-btn" (click)="onPriceSortSelected()">{{ btnLabel }}</button>
 </div>
 

@@ -20,6 +20,7 @@ export class ProductsComponent implements OnInit {
   minVal: number = 50;
   maxVal: number = 10000;
   loadingProducts = true;
+  sort: Sort = Sort.ASCENDING;
 
   constructor(
     private productService: ProductService,
@@ -37,6 +38,16 @@ export class ProductsComponent implements OnInit {
 
   handleApplyBtnClick(minMax: MinMax): void {
     this.filteredProducts = this.products.filter(product => product.price >= minMax.min && product.price <= minMax.max);
+    switch(this.sort) {
+      case Sort.ASCENDING:
+        this.filteredProducts.sort(this.sortAsc);
+        break;
+      case Sort.DESCENDING:
+        this.filteredProducts.sort(this.sortDesc);
+        break;
+      case Sort.STAR:
+        this.filteredProducts.sort(this.sortBestRated);
+    }
   }
 
   handleProductClick(productId: number): void {
@@ -45,27 +56,18 @@ export class ProductsComponent implements OnInit {
       this.cartService.addItemToCart(productId, userId).pipe(
         switchMap((orderItem: OrderItem) => this.cartService.getAmountForOrder(orderItem.orderId))
       ).subscribe(amount => {
-        console.log('amount', amount);
         this.cartService.notifyAboutCartItemAmount(amount);
       })
-      // this.cartService.addItemToCart(productId, userId).subscribe({
-      //   next: (orderItem: OrderItem) => {
-      //     console.log('orderItem', orderItem);
-      //   }
-      // })
     }
   }
 
   handlePriceSort(sort: Sort): void {
-    const sortAsc = (a: Product, b: Product) => a.price - b.price;
-    const sortDesc = (a: Product, b: Product) => b.price - a.price;
-    if(sort === Sort.ASCENDING) {
-      this.filteredProducts.sort(sortAsc);
-      this.products.sort(sortAsc);
-    } else {
-      this.filteredProducts.sort(sortDesc);
-      this.products.sort(sortDesc);
-    }
+    this.sort = sort;
+  }
+
+  handleReset(): void {
+    this.filteredProducts = [...this.products];
+    this.filteredProducts.sort(this.sortDesc);
   }
 
   private getProducts(): void {
@@ -76,6 +78,18 @@ export class ProductsComponent implements OnInit {
       this.maxVal = Math.max(...this.products.map(product => product.price));
       this.loadingProducts = false;
     });
+  }
+
+  private sortAsc(a: Product, b: Product): number {
+    return a.price - b.price;
+  }
+
+  private sortDesc(a: Product, b: Product): number {
+    return b.price - a.price;
+  }
+
+  private sortBestRated(a: Product, b: Product): number {
+    return b.stars - a.stars;
   }
 
 }

@@ -28,24 +28,51 @@
   .panel-row {
     display: flex;
   }
+
+  .panel-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 }
 
 .product-list {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 2rem;
+  grid-row-gap: 2rem;
+  margin-top: 2rem;
   width: 100%;
-}
-
-.product-item {
-  width: calc(30% - 1rem);
-  margin: 1rem;
 }
 
 .panel-item {
   width: 50%;
-  margin: 0 1rem;
+}
+
+.left-panel {
+  margin-right: .5rem;
+}
+
+.right-panel {
+  margin-left: .5rem;
 }
 
 .search-item {
   width: 100%;
+}
+
+.reset-btn {
+  width: 100%;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: 2px solid white;
+  background-color: #333;
+  color: white;
+  padding: 1em;
+  transition: all .25s ease;
+}
+
+.reset-btn:hover {
+  cursor: pointer;
+  background-color: #555;
 }

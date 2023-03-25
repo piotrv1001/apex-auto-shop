@@ -17,6 +17,7 @@ export class PriceSorterComponent implements OnInit {
   @Input() sortLabel: string = 'Sort';
   @Input() ascSortLabel: string = 'Lowest price';
   @Input() descSortLabel: string = 'Highest price';
+  @Input() starSortLabel: string = 'Best rated';
   @Output() priceSort: EventEmitter<Sort> = new EventEmitter<Sort>();
   sortingOptions: SortingOption[] = [];
   selectedOption: SortingOption | null = null;
@@ -25,12 +26,13 @@ export class PriceSorterComponent implements OnInit {
     this.sortingOptions = [
       { label: this.ascSortLabel, sort: Sort.ASCENDING },
       { label: this.descSortLabel, sort: Sort.DESCENDING },
+      { label: this.starSortLabel, sort: Sort.STAR }
     ]
   }
 
-  onPriceSortSelected(): void {
-    if(this.selectedOption) {
-      this.priceSort.emit(this.selectedOption.sort);
+  onPriceSortSelected(option: SortingOption): void {
+    if(option) {
+      this.priceSort.emit(option.sort);
     }
   }
 }

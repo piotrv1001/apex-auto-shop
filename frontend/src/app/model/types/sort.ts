@@ -1,4 +1,5 @@
 export enum Sort {
   ASCENDING,
-  DESCENDING
+  DESCENDING,
+  STAR
 }
