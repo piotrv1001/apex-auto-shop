@@ -1,19 +1,61 @@
 .grid-row {
   display: grid;
-  width: max-content;
-  grid-template-columns: repeat(2, 1fr) 2fr;
-  margin: 1rem 0;
+  width: 60%;
+  grid-template-columns: 3fr 1fr 1fr 1fr;
 }
 
 .row {
   display: flex;
-  margin: 1rem;
+  align-items: center;
+}
+
+.last-row {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
 .col {
   display: flex;
   flex-direction: column;
-  align-self: flex-start;
   padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.car-desc {
+  color: #b1b1b1;
+}
+
+.price {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+.amount {
+  border: 1px solid #d3d3d3;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.amount-btn {
+  border: none;
+  width: 40px;
+  height: 40px;
+  background-color: white;
+}
+
+.amount-btn:hover:enabled {
+  cursor: pointer;
+  background-color: #d3d3d3;
+}
+
+.amount-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  width: 40px;
+  height: 40px;
 }

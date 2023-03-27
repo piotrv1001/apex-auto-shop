@@ -1,12 +1,22 @@
 <mat-stepper linear orientation="horizontal" #stepper>
   <mat-step label="Cart">
-    <app-order-item *ngFor="let orderItem of orderItems"
-      [orderItem]="orderItem"
-      (incrementBtnClick)="handleIncrement($event)"
-      (decrementBtnClick)="handleDecrement($event)"
-      (removeBtnClick)="handleRemove($event)">
-    </app-order-item>
-    <button mat-raised-button color="accent" matStepperNext>Next</button>
+    <div class="cart-grid">
+      <span class="cart-item">Product</span>
+      <span class="cart-item">Price</span>
+      <span class="cart-item">Quantity</span>
+      <span class="cart-item">Total</span>
+    </div>
+    <mat-divider class="divider"></mat-divider>
+    <div *ngFor="let orderItem of orderItems">
+      <app-order-item
+        [orderItem]="orderItem"
+        (incrementBtnClick)="handleIncrement($event)"
+        (decrementBtnClick)="handleDecrement($event)"
+        (removeBtnClick)="handleRemove($event)">
+      </app-order-item>
+      <mat-divider class="divider"></mat-divider>
+    </div>
+    <button class="next-btn login-btn" matStepperNext>Proceed</button>
   </mat-step>
   <mat-step label="Delivery">
     <app-delivery (submit)="handleDeliveryFormSubmisssion($event)"></app-delivery>

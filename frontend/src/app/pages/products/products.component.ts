@@ -7,6 +7,7 @@ import { Product } from "src/app/model/entities/product.model";
 import { ProductService } from "src/app/services/product.service";
 import { CartService } from 'src/app/services/cart.service';
 import { switchMap } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-products',
@@ -25,7 +26,8 @@ export class ProductsComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private localStorageService: LocalStorageService,
-    private cartService: CartService) {}
+    private cartService: CartService,
+    private snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
     this.getProducts();
@@ -57,6 +59,12 @@ export class ProductsComponent implements OnInit {
         switchMap((orderItem: OrderItem) => this.cartService.getAmountForOrder(orderItem.orderId))
       ).subscribe(amount => {
         this.cartService.notifyAboutCartItemAmount(amount);
+        const message = 'Added item to cart!';
+          const action = 'OK';
+          const durationInSeconds = 5;
+          this.snackBar.open(message, action, {
+            duration: durationInSeconds * 1000
+          });
       })
     }
   }

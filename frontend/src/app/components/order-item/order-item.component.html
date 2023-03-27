@@ -1,13 +1,25 @@
 <div class="grid-row">
-  <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu" width="200">
-  <div class="col">
-    <h2>{{ orderItem?.product?.name }}</h2>
-    <p style="color: green;">{{ orderItem?.product?.price | currency }}</p>
+  <div class="row">
+    <img [src]="'../../../assets/img/' + orderItem?.product?.imgUrl" alt="Car image" width="200">
+    <div class="col">
+      <h2>{{ orderItem?.product?.name }}</h2>
+      <p class="car-desc">{{ orderItem?.product?.description }}</p>
+    </div>
   </div>
   <div class="row">
-    <button mat-button (click)="decrement()" [disabled]="orderItem?.amount === 1">-</button>
-    <span style="margin: 0 .5rem;">{{ orderItem?.amount }}</span>
-    <button mat-button (click)="increment()">+</button>
-    <button mat-button color="warn" (click)="remove()">Remove</button>
+    <div class="price">{{ orderItem?.product?.price | currency }}</div>
+  </div>
+  <div class="row">
+    <div class="row amount">
+      <button class="amount-btn" (click)="decrement()" [disabled]="orderItem?.amount === 1">-</button>
+      <div class="amount-item">{{ orderItem?.amount }}</div>
+      <button class="amount-btn" (click)="increment()">+</button>
+    </div>
+  </div>
+  <div class="last-row">
+    <div class="price">{{ orderItem?.product!.price * orderItem!.amount | currency }}</div>
+    <button mat-icon-button color="warn" (click)="remove()">
+      <mat-icon>delete</mat-icon>
+    </button>
   </div>
 </div>
