@@ -1,6 +1,6 @@
 .grid-row {
   display: grid;
-  width: 60%;
+  width: 100%;
   grid-template-columns: 3fr 1fr 1fr 1fr;
 }
 
@@ -19,7 +19,7 @@
   display: flex;
   flex-direction: column;
   padding-left: 1rem;
-  padding-right: 1rem;
+  padding-right: 4rem;
 }
 
 .car-desc {

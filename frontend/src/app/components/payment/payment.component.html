@@ -1,96 +1,75 @@
-<div [ngSwitch]="paymentState">
-  <div *ngSwitchCase="0" class="payment-wrapper">
-    <div class="payment-column">
-      <mat-card class="payment-card">
-        <mat-card-header>
-          <mat-card-title>Payment method</mat-card-title>
-        </mat-card-header>
-          <mat-divider style="margin: 1rem"></mat-divider>
-          <mat-card-content>
-            <div class="credit-card-row">
-              <div
-                class="credit-card-item"
-                matBadge="check"
-                [matBadgeHidden]="selectedCardIndex !== 0"
-                (click)="updateCardIndex(0)"
-                [ngClass]="selectedCardIndex === 0 ? 'selected-card' : 'unselected-card'"><img src="../../../assets/img/Mastercard-logo.svg.png" alt="Mastercard">
-              </div>
-              <div class="credit-card-item"
-                matBadge="check"
-                [matBadgeHidden]="selectedCardIndex !== 1"
-                (click)="updateCardIndex(1)"
-                [ngClass]="selectedCardIndex === 1 ? 'selected-card' : 'unselected-card'"><img src="../../../assets/img/Visa_Logo.png" alt="Visa">
-              </div>
-              <div
-                class="credit-card-item"
-                matBadge="check"
-                [matBadgeHidden]="selectedCardIndex !== 2"
-                (click)="updateCardIndex(2)"
-                [ngClass]="selectedCardIndex === 2 ? 'selected-card' : 'unselected-card'"><img src="../../../assets/img/2560px-PayPal_logo.svg.png" alt="PayPal">
-              </div>
-              <div class="credit-card-item"
-                matBadge="check"
-                [matBadgeHidden]="selectedCardIndex !== 3"
-                (click)="updateCardIndex(3)"
-                [ngClass]="selectedCardIndex === 3 ? 'selected-card' : 'unselected-card'"><img src="../../../assets/img/1200px-American_Express_logo_(2018).svg.png" alt="American Express">
-              </div>
-            </div>
-            <div class="payment-grid">
-              <h2 class="div1 align-center">Cardholder name</h2>
-            <mat-form-field class="div2">
-              <input
-                matInput
-                placeholder="Cardholder name">
-              </mat-form-field>
-              <h2 class="div3 align-center">Card number</h2>
-              <h2 class="div4 align-center">Date</h2>
-              <h2 class="div5 align-center">CCV<mat-icon class="ccv-tooltip" matTooltip="3 digit security code, usually found on the back of your card">question_mark</mat-icon></h2>
-              <mat-form-field class="div6">
-                <input
-                  matInput
-                  placeholder="9999-9999-9999-9999"
-                  mask="9999-9999-9999-9999">
-              </mat-form-field>
-              <mat-form-field class="div7">
-                <input
-                  matInput
-                  placeholder="99/99"
-                  mask="99/99">
-              </mat-form-field>
-              <mat-form-field class="div8">
-                <input
-                  matInput
-                  placeholder="999"
-                  mask="999">
-              </mat-form-field>
-            </div>
-          </mat-card-content>
-      </mat-card>
+<div [ngSwitch]="paymentState" class="wrapper">
+  <div *ngSwitchCase="0" class="login-card">
+    <div class="login-heading">Payment</div>
+    <h2 class="payment-method">Payment method</h2>
+    <div class="credit-card-row">
+      <div
+        class="credit-card-item"
+        matBadge="check"
+        [matBadgeHidden]="selectedCardIndex !== 0"
+        (click)="updateCardIndex(0)"
+        [ngClass]="selectedCardIndex === 0 ? 'selected-card' : 'unselected-card'"><img src="../../../assets/img/Mastercard-logo.svg.png" alt="Mastercard">
+      </div>
+      <div class="credit-card-item"
+        matBadge="check"
+        [matBadgeHidden]="selectedCardIndex !== 1"
+        (click)="updateCardIndex(1)"
+        [ngClass]="selectedCardIndex === 1 ? 'selected-card' : 'unselected-card'"><img src="../../../assets/img/Visa_Logo.png" alt="Visa">
+      </div>
+      <div
+        class="credit-card-item"
+        matBadge="check"
+        [matBadgeHidden]="selectedCardIndex !== 2"
+        (click)="updateCardIndex(2)"
+        [ngClass]="selectedCardIndex === 2 ? 'selected-card' : 'unselected-card'"><img src="../../../assets/img/2560px-PayPal_logo.svg.png" alt="PayPal">
+      </div>
+      <div class="credit-card-item"
+        matBadge="check"
+        [matBadgeHidden]="selectedCardIndex !== 3"
+        (click)="updateCardIndex(3)"
+        [ngClass]="selectedCardIndex === 3 ? 'selected-card' : 'unselected-card'"><img src="../../../assets/img/1200px-American_Express_logo_(2018).svg.png" alt="American Express">
+      </div>
     </div>
-    <div class="summary-column">
-      <h2 style="margin-bottom: 2rem;">Summary</h2>
-      <div class="flex-row">
-        <span>Order amount</span>
-        <span>$150</span>
-      </div>
-      <div class="flex-row">
-        <span>Tax</span>
-        <span>$10</span>
-      </div>
-      <mat-divider style="margin: 2rem 0"></mat-divider>
-      <div class="flex-row total">
-        <span>Total</span>
-        <span>$160</span>
-      </div>
-      <button class="confirm-order-btn" mat-raised-button color="primary" (click)="simulatePayment()">Confirm order</button>
+    <div class="payment-grid">
+      <h2 class="div1 align-center">Cardholder name</h2>
+    <mat-form-field class="div2">
+      <input
+        matInput
+        placeholder="Cardholder name">
+      </mat-form-field>
+      <h2 class="div3 align-center">Card number</h2>
+      <h2 class="div4 align-center">Date</h2>
+      <h2 class="div5 align-center">CCV<mat-icon class="ccv-tooltip" matTooltip="3 digit security code, usually found on the back of your card">question_mark</mat-icon></h2>
+      <mat-form-field class="div6">
+        <input
+          matInput
+          placeholder="9999-9999-9999-9999"
+          mask="9999-9999-9999-9999">
+      </mat-form-field>
+      <mat-form-field class="div7">
+        <input
+          matInput
+          placeholder="99/99"
+          mask="99/99">
+      </mat-form-field>
+      <mat-form-field class="div8">
+        <input
+          matInput
+          placeholder="999"
+          mask="999">
+      </mat-form-field>
     </div>
+    <button class="login-btn" (click)="simulatePayment()">Pay now</button>
   </div>
   <div *ngSwitchCase="1">
     <h2>Payment in progress...</h2>
     <mat-progress-bar mode="indeterminate"></mat-progress-bar>
   </div>
-  <div *ngSwitchCase="2">
+  <div *ngSwitchCase="2" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
     <h2>Payment complete!</h2>
+    <div class="check-circle">
+      <mat-icon class="check-icon">check</mat-icon>
+    </div>
   </div>
 </div>
 

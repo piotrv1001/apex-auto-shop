@@ -1,11 +1,12 @@
 :host::ng-deep.mat-horizontal-content-container {
   background-color: #f6f9ff;
+  padding: 0;
 }
 
 .cart-grid {
   display: grid;
   margin-top: 2rem;
-  width: 60%;
+  width: 100%;
   grid-template-columns: 3fr 1fr 1fr 1fr;
 }
 
@@ -16,9 +17,37 @@
 
 .divider {
   margin: 1rem 0;
-  width: 60%;
+  width: 100%;
 }
 
 .next-btn {
   width: 20% !important;
+}
+
+.flex-row {
+  display: flex;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.5rem 0;
+}
+
+.summary-column {
+  width: 40%;
+  background-color: white;
+  padding: 4rem;
+}
+
+.total {
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.summary-heading {
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  font-weight: bold;
 }

@@ -16,6 +16,9 @@ export class CartComponent implements OnInit {
 
   orderItems: OrderItem[] = [];
   order?: Order;
+  totalNoTax: number = 0;
+  totalWithTax: number = 0;
+  tax: number = 0;
 
   constructor(
     private localStorageService: LocalStorageService,
@@ -71,12 +74,15 @@ export class CartComponent implements OnInit {
       this.orderService.getOrdersForUser(userId, true).subscribe(orders => {
         this.order = orders[0];
         this.orderItems = this.order.orderItems ?? [];
+        this.calculateTotal();
       })
     }
   }
 
-  calculateTotal(): number {
-    return this.orderItems.reduce((acc, curr) => acc + curr.amount * curr.product.price, 0);
+  private calculateTotal(): void {
+    this.totalNoTax = this.orderItems.reduce((acc, curr) => acc + curr.amount * curr.product.price, 0);
+    this.tax = 0.23 * this.totalNoTax;
+    this.totalWithTax = this.totalNoTax + this.tax;
   }
 
   private partialUpdate(orderItem: OrderItem): void {

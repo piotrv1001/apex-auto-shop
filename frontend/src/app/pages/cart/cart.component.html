@@ -1,22 +1,42 @@
 <mat-stepper linear orientation="horizontal" #stepper>
   <mat-step label="Cart">
-    <div class="cart-grid">
-      <span class="cart-item">Product</span>
-      <span class="cart-item">Price</span>
-      <span class="cart-item">Quantity</span>
-      <span class="cart-item">Total</span>
+    <div class="flex-row">
+      <div style="width: 60%; padding: 1rem;">
+        <div class="cart-grid">
+          <span class="cart-item">Product</span>
+          <span class="cart-item">Price</span>
+          <span class="cart-item">Quantity</span>
+          <span class="cart-item">Total</span>
+        </div>
+        <mat-divider class="divider"></mat-divider>
+        <div *ngFor="let orderItem of orderItems">
+          <app-order-item
+            [orderItem]="orderItem"
+            (incrementBtnClick)="handleIncrement($event)"
+            (decrementBtnClick)="handleDecrement($event)"
+            (removeBtnClick)="handleRemove($event)">
+          </app-order-item>
+          <mat-divider class="divider"></mat-divider>
+        </div>
+      </div>
+      <div class="summary-column">
+        <h2 class="summary-heading">Order summary</h2>
+        <div class="price-row">
+          <span>Order amount</span>
+          <span>{{ totalNoTax | currency }}</span>
+        </div>
+        <div class="price-row">
+          <span>Tax (23%)</span>
+          <span>{{ tax | currency }}</span>
+        </div>
+        <mat-divider style="margin: 2rem 0"></mat-divider>
+        <div class="price-row total">
+          <span>Total</span>
+          <span>{{ totalWithTax | currency }}</span>
+        </div>
+        <button class="login-btn" style="margin-top: 2rem;" matStepperNext>Proceed</button>
+      </div>
     </div>
-    <mat-divider class="divider"></mat-divider>
-    <div *ngFor="let orderItem of orderItems">
-      <app-order-item
-        [orderItem]="orderItem"
-        (incrementBtnClick)="handleIncrement($event)"
-        (decrementBtnClick)="handleDecrement($event)"
-        (removeBtnClick)="handleRemove($event)">
-      </app-order-item>
-      <mat-divider class="divider"></mat-divider>
-    </div>
-    <button class="next-btn login-btn" matStepperNext>Proceed</button>
   </mat-step>
   <mat-step label="Delivery">
     <app-delivery (submit)="handleDeliveryFormSubmisssion($event)"></app-delivery>
