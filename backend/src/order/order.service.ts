@@ -24,6 +24,7 @@ export class OrderService {
     order.houseNumber = orderDTO.houseNumber;
     order.city = orderDTO.city;
     order.name = orderDTO.name;
+    order.orderNumber = '';
     return this.orderRepository.save(order);
   }
 

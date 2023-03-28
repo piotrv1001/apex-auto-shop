@@ -44,6 +44,9 @@ export class Order {
   @Column({ nullable: true })
   userId?: number;
 
+  @Column({ nullable: true })
+  orderNumber?: string;
+
   @OneToMany(() => OrderItem, (orderItem) => orderItem.order, {
     nullable: true,
   })

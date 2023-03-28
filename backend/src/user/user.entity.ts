@@ -12,25 +12,25 @@ export class User {
   @Column({ nullable: true })
   password?: string;
 
-  @Column({ nullable: true })
+  @Column({ nullable: true, default: '' })
   email?: string;
 
-  @Column({ nullable: true })
+  @Column({ nullable: true, default: '' })
   name?: string;
 
-  @Column({ nullable: true })
+  @Column({ nullable: true, default: '' })
   zipCode?: string;
 
-  @Column({ nullable: true })
+  @Column({ nullable: true, default: '' })
   city?: string;
 
-  @Column({ nullable: true })
+  @Column({ nullable: true, default: '' })
   street?: string;
 
-  @Column({ nullable: true })
+  @Column({ nullable: true, default: '' })
   houseNumber?: string;
 
-  @Column({ nullable: true })
+  @Column({ nullable: true, default: '' })
   phoneNumber?: string;
 
   @OneToMany(() => Order, (order) => order.user, { nullable: true })

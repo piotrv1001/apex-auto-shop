@@ -14,6 +14,7 @@ export class Order {
     public city?: string,
     public name?: string,
     public user?: User,
-    public active?: boolean
+    public active?: boolean,
+    public orderNumber?: string
   ) {}
 }

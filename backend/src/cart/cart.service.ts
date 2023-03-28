@@ -19,6 +19,7 @@ export class CartService {
         user: {
           id: userId,
         },
+        active: true,
       },
     });
     const orderItem = new OrderItem();

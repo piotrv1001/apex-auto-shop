@@ -45,9 +45,9 @@
     </ng-template>
   </mat-step>
   <mat-step label="Delivery">
-    <app-delivery (submit)="handleDeliveryFormSubmisssion($event)"></app-delivery>
+    <app-delivery (submit)="handleDeliveryFormSubmisssion($event, stepper)" [deliveryData]="orderDeliveryData"></app-delivery>
   </mat-step>
   <mat-step label="Payment">
-    <app-payment (donePayment)="handleDonePayment()"></app-payment>
+    <app-payment (donePayment)="handleDonePayment()" [order]="order"></app-payment>
   </mat-step>
 </mat-stepper>

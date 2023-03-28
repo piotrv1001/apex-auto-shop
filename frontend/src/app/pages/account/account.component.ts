@@ -13,6 +13,7 @@ import { User } from 'src/app/model/entities/user.model';
 export class AccountComponent implements OnInit {
 
   currentUser?: User;
+  userDeliveryData: DeliveryData = {};
 
   constructor(
     private localStorageService: LocalStorageService,
@@ -33,6 +34,17 @@ export class AccountComponent implements OnInit {
       this.userService.getUserById(userId).subscribe({
         next: (user) => {
           this.currentUser = user;
+          this.userDeliveryData = {
+            address: {
+              city: user.city,
+              houseNumber: user.houseNumber,
+              street: user.street,
+              zipCode: user.zipCode,
+            },
+            name: user.name,
+            email: user.email,
+            phoneNumber: user.phoneNumber,
+          }
           this.userService.notifyAboutUser(user);
         }
       })

@@ -7,6 +7,7 @@ import { OrderItemSerive } from 'src/app/services/order-item.service';
 import { CartService } from 'src/app/services/cart.service';
 import { Order } from 'src/app/model/entities/order.model';
 import { Router } from '@angular/router';
+import { MatStepper } from '@angular/material/stepper';
 
 @Component({
   selector: 'app-cart',
@@ -20,6 +21,7 @@ export class CartComponent implements OnInit {
   totalNoTax: number = 0;
   totalWithTax: number = 0;
   tax: number = 0;
+  orderDeliveryData: DeliveryData = {};
 
   constructor(
     private localStorageService: LocalStorageService,
@@ -56,7 +58,7 @@ export class CartComponent implements OnInit {
     });
   }
 
-  handleDeliveryFormSubmisssion(deliveryData: DeliveryData): void {
+  handleDeliveryFormSubmisssion(deliveryData: DeliveryData, stepper: MatStepper): void {
     if(this.order) {
       const { name, email, phoneNumber, address } = deliveryData;
       if(address) {
@@ -71,11 +73,14 @@ export class CartComponent implements OnInit {
       this.order.phoneNumber = phoneNumber;
       this.order.name = name;
       this.orderUpdate(this.order);
+      stepper.next();
     }
   }
 
   handleDonePayment(): void {
-    if(this.order?.active != null) {
+    const randomOrderNumber = this.generateRandomOrderNumber(10);
+    if(this.order?.active != null && this.order) {
+      this.order.orderNumber = randomOrderNumber;
       this.order.active = false;
       this.unsetOrderItems(this.order);
       this.orderService.partialUpdate(this.order).subscribe((order: Order) => {
@@ -89,6 +94,17 @@ export class CartComponent implements OnInit {
     if(userId) {
       this.orderService.getOrdersForUser(userId, true).subscribe(orders => {
         this.order = orders[0];
+        this.orderDeliveryData = {
+          address: {
+            city: this.order.city,
+            street: this.order.street,
+            houseNumber: this.order.houseNumber,
+            zipCode: this.order.zipCode
+          },
+          name: this.order.name,
+          email: this.order.email,
+          phoneNumber: this.order.phoneNumber
+        }
         this.orderItems = this.order.orderItems ?? [];
         this.calculateTotal();
       })
@@ -118,5 +134,15 @@ export class CartComponent implements OnInit {
     if(order?.orderItems != null) {
       order.orderItems = undefined;
     }
+  }
+
+  private generateRandomOrderNumber(length: number) {
+    let result = '';
+    const characters = '0123456789';
+    const charactersLength = characters.length;
+    for (let i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
   }
 }

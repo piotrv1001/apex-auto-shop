@@ -1,43 +1,48 @@
 <div class="wrapper">
   <div class="login-card">
     <div class="login-heading">Delivery information</div>
-    <form *ngIf="deliveryForm !== undefined" [formGroup]="deliveryForm" class="delivery-form" (ngSubmit)="onSubmit()">
+    <form class="delivery-form" (ngSubmit)="onSubmit()" #deliveryForm="ngForm">
       <h2>Name</h2>
       <mat-form-field>
         <input
           matInput
           placeholder="Name"
-          formControlName="name">
+          [(ngModel)]="deliveryData.name"
+          name="name">
       </mat-form-field>
       <h2>Address</h2>
-      <div formGroupName="address">
+      <div>
         <div>
-          <mat-form-field class="address-item">
+          <mat-form-field class="address-item" *ngIf="deliveryData.address?.city != null">
             <input
               matInput
               placeholder="City"
-              formControlName="city">
+              [(ngModel)]="deliveryData.address!.city"
+              name="city">
           </mat-form-field>
-          <mat-form-field class="address-item">
+          <mat-form-field class="address-item" *ngIf="deliveryData.address?.zipCode != null">
             <input
               matInput
               placeholder="Zip code"
-              formControlName="zipCode"
+              [(ngModel)]="deliveryData.address!.zipCode"
+              name="zipCode"
               mask="99-9999">
           </mat-form-field>
         </div>
         <div>
-          <mat-form-field class="address-item">
+          <mat-form-field class="address-item" *ngIf="deliveryData.address?.street">
             <input
               matInput
               placeholder="Street"
-              formControlName="street">
+              [(ngModel)]="deliveryData.address!.street"
+              name="street">
           </mat-form-field>
-          <mat-form-field class="address-item">
+          <mat-form-field class="address-item" *ngIf="deliveryData.address?.houseNumber">
             <input
               matInput
               placeholder="House number"
-              formControlName="houseNumber">
+              [(ngModel)]="deliveryData.address!.houseNumber"
+              name="houseNumber">
           </mat-form-field>
         </div>
       </div>
@@ -46,14 +51,16 @@
         <input
           matInput
           placeholder="Email"
-          formControlName="email">
+          [(ngModel)]="deliveryData.email"
+          name="email">
       </mat-form-field>
       <h2>Phone number</h2>
       <mat-form-field>
         <input
           matInput
           placeholder="Phone number"
-          formControlName="phoneNumber"
+          [(ngModel)]="deliveryData.phoneNumber"
+          name="phoneNumber"
           mask="999 999 999">
       </mat-form-field>
       <button class="login-btn" type="submit">Submit</button>
