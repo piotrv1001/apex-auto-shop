@@ -1,0 +1,33 @@
+<div class="wrapper">
+  <div class="accordion-container">
+    <div class="grid-table table-header">
+      <div>Order ID</div>
+      <div>Date</div>
+      <div>Address</div>
+      <div>Total</div>
+      <div>Status</div>
+    </div>
+    <mat-accordion class="accordion">
+      <mat-expansion-panel *ngFor="let order of orders">
+          <mat-expansion-panel-header>
+            <div class="grid-table" style="width: 100%;">
+             <div>{{ order.orderNumber }}</div>
+             <div>{{ order.date | date : 'longDate' }}</div>
+             <div>{{ formatAddress(order) }}</div>
+             <div>{{ 200000 | currency }}</div>
+             <div><span class="status">Paid</span></div>
+            </div>
+          </mat-expansion-panel-header>
+          <mat-divider style="margin: 1rem 0;"></mat-divider>
+          <div *ngFor="let orderItem of order.orderItems" style="margin-bottom: 1rem;">
+            <div class="item-row">
+              <img [src]="'../../../assets/img/' + orderItem.product.imgUrl" alt="Image" class="product-img">
+              <span class="product-name item">{{ orderItem.product.name }}</span>
+              <span class="item">{{ orderItem.product.price | currency }}</span>
+            </div>
+          </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>
+

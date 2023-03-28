@@ -1,0 +1,47 @@
+.wrapper {
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.accordion-container {
+  width: 50%;
+}
+
+.grid-table {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.table-header {
+  padding: 1rem 2rem;
+  margin: 1rem 0;
+  border-radius: .2rem;
+  background-color: white;
+  border: 1px solid gray;
+}
+
+.status {
+  color: limegreen;
+}
+
+.product-img {
+  width: 10%;
+}
+
+.item-row {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.item {
+  padding-left: 1rem;
+}
+
+.product-name {
+  font-size: 1.1rem;
+  font-weight: bold;
+}

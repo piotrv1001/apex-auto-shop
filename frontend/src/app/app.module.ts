@@ -32,11 +32,13 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 
 import { DeliveryComponent } from './components/delivery/delivery.component';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { PaymentComponent } from './components/payment/payment.component';
+import { OrderHistoryComponent } from './pages/order-history/order-history.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +55,8 @@ import { PaymentComponent } from './components/payment/payment.component';
     CartComponent,
     DeliveryComponent,
     AccountComponent,
-    PaymentComponent
+    PaymentComponent,
+    OrderHistoryComponent
   ],
   imports: [
     BrowserModule,
@@ -75,7 +78,8 @@ import { PaymentComponent } from './components/payment/payment.component';
     MatDividerModule,
     MatBadgeModule,
     MatTooltipModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatExpansionModule
   ],
   providers: [httpInterceptorProviders, provideNgxMask()],
   bootstrap: [AppComponent]

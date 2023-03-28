@@ -21,6 +21,13 @@ export class OrderHistoryComponent implements OnInit {
     this.getOrders();
   }
 
+  formatAddress(order: Order): string {
+    if(order.city == null || order.street == null || order.houseNumber == null) {
+      return 'Unknown';
+    }
+    return `${order.city}, ${order.street} ${order.houseNumber}`;
+  }
+
   private getOrders(): void {
     const userId = this.localStorageService.getUserId();
     if(userId) {
