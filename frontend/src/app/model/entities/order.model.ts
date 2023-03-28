@@ -13,6 +13,7 @@ export class Order {
     public houseNumber?: string,
     public city?: string,
     public name?: string,
-    public user?: User
+    public user?: User,
+    public active?: boolean
   ) {}
 }

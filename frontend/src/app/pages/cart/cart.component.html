@@ -1,6 +1,6 @@
 <mat-stepper linear orientation="horizontal" #stepper>
   <mat-step label="Cart">
-    <div class="flex-row">
+    <div *ngIf="orderItems.length > 0; else emptyCart" class="flex-row">
       <div style="width: 60%; padding: 1rem;">
         <div class="cart-grid">
           <span class="cart-item">Product</span>
@@ -37,11 +37,17 @@
         <button class="login-btn" style="margin-top: 2rem;" matStepperNext>Proceed</button>
       </div>
     </div>
+    <ng-template #emptyCart>
+      <div class="empty-cart">
+        <h2>Your cart is empty</h2>
+        <button style="width: 15%;" class="login-btn" (click)="navigateHome()">Shop now</button>
+      </div>
+    </ng-template>
   </mat-step>
   <mat-step label="Delivery">
     <app-delivery (submit)="handleDeliveryFormSubmisssion($event)"></app-delivery>
   </mat-step>
   <mat-step label="Payment">
-    <app-payment></app-payment>
+    <app-payment (donePayment)="handleDonePayment()"></app-payment>
   </mat-step>
 </mat-stepper>

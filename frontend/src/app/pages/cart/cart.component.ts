@@ -6,6 +6,7 @@ import { OrderService } from 'src/app/services/order.service';
 import { OrderItemSerive } from 'src/app/services/order-item.service';
 import { CartService } from 'src/app/services/cart.service';
 import { Order } from 'src/app/model/entities/order.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -24,11 +25,16 @@ export class CartComponent implements OnInit {
     private localStorageService: LocalStorageService,
     private orderService: OrderService,
     private orderItemService: OrderItemSerive,
-    private cartService: CartService
+    private cartService: CartService,
+    private router: Router
     ) {}
 
   ngOnInit(): void {
     this.getOrderItems();
+  }
+
+  navigateHome(): void {
+    this.router.navigate(['/']);
   }
 
   handleIncrement(orderItem: OrderItem): void {
@@ -68,6 +74,16 @@ export class CartComponent implements OnInit {
     }
   }
 
+  handleDonePayment(): void {
+    if(this.order?.active != null) {
+      this.order.active = false;
+      this.unsetOrderItems(this.order);
+      this.orderService.partialUpdate(this.order).subscribe((order: Order) => {
+        this.order = order;
+      });
+    }
+  }
+
   getOrderItems(): void {
     const userId = this.localStorageService.getUserId();
     if(userId) {
@@ -92,9 +108,15 @@ export class CartComponent implements OnInit {
   }
 
   private orderUpdate(order: Order): void {
-    console.log('order', order);
+    this.unsetOrderItems(order);
     this.orderService.partialUpdate(order).subscribe(updatedOrder => {
       this.order = updatedOrder;
     })
+  }
+
+  private unsetOrderItems(order: Order): void {
+    if(order?.orderItems != null) {
+      order.orderItems = undefined;
+    }
   }
 }
