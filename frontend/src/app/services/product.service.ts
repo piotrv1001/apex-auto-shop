@@ -16,4 +16,8 @@ export class ProductService {
   getAllProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(`${BASE_URL}/${this.PRODUCT_ROUTE}`);
   }
+
+  initProducts(): Observable<Product[]> {
+    return this.http.get<Product[]>(`${BASE_URL}/${this.PRODUCT_ROUTE}/init`);
+  }
 }

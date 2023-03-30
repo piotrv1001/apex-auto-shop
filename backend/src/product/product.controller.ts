@@ -7,6 +7,11 @@ import { Product } from './product.entity';
 export class ProductController {
   constructor(private readonly productService: ProductService) {}
 
+  @Get('init')
+  initProducts() {
+    return this.productService.initProducts();
+  }
+
   @Post()
   create(@Body() productDTO: ProductDTO): Promise<Product> {
     return this.productService.create(productDTO);
