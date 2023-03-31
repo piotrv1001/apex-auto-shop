@@ -45,6 +45,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .credit-card-item {
@@ -138,6 +139,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+
+@media (max-width: 600px) {
+  .credit-card-item {
+    width: 35%;
+    margin: 1rem 0;
+  }
 }
 
 

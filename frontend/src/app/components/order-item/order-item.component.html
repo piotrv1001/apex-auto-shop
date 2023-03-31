@@ -1,6 +1,6 @@
 <div class="grid-row">
   <div class="row">
-    <img [src]="'../../../assets/img/' + orderItem?.product?.imgUrl" alt="Car image" width="200">
+    <img [src]="'../../../assets/img/' + orderItem?.product?.imgUrl" alt="Car image" class="item-img">
     <div class="col">
       <h2>{{ orderItem?.product?.name }}</h2>
       <p class="car-desc">{{ orderItem?.product?.description }}</p>
@@ -9,15 +9,15 @@
   <div class="row">
     <div class="price">{{ orderItem?.product?.price | currency }}</div>
   </div>
-  <div class="row">
-    <div class="row amount">
+  <div class="amount-row">
+    <div class="amount-row amount">
       <button class="amount-btn" (click)="decrement()" [disabled]="orderItem?.amount === 1">-</button>
       <div class="amount-item">{{ orderItem?.amount }}</div>
       <button class="amount-btn" (click)="increment()">+</button>
     </div>
   </div>
   <div class="last-row">
-    <div class="price">{{ orderItem?.product!.price * orderItem!.amount | currency }}</div>
+    <div class="total-price">{{ orderItem?.product!.price * orderItem!.amount | currency }}</div>
     <button mat-icon-button color="warn" (click)="remove()">
       <mat-icon>delete</mat-icon>
     </button>

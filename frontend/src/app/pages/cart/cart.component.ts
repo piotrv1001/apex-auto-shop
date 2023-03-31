@@ -119,7 +119,7 @@ export class CartComponent implements OnInit {
 
   private partialUpdate(orderItem: OrderItem): void {
     this.orderItemService.partialUpdate(orderItem).subscribe(updatedOrderItem => {
-      console.log('updated', updatedOrderItem);
+      this.calculateTotal();
     });
   }
 

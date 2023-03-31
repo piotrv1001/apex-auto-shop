@@ -4,6 +4,10 @@
   grid-template-columns: 3fr 1fr 1fr 1fr;
 }
 
+.item-img {
+  width: 200px;
+}
+
 .row {
   display: flex;
   align-items: center;
@@ -33,10 +37,22 @@
   font-weight: bold;
 }
 
+.total-price {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
 .amount {
   border: 1px solid #d3d3d3;
   border-radius: 5px;
   overflow: hidden;
+}
+
+.amount-row {
+  display: flex;
+  align-items: center;
 }
 
 .amount-btn {
@@ -58,4 +74,29 @@
   background-color: white;
   width: 40px;
   height: 40px;
+}
+
+@media (max-width: 1000px) {
+  .grid-row {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .row {
+    flex-direction: column;
+  }
+  .item-img {
+    height: 300px;
+    width: auto;
+  }
+  .col {
+    padding: 2rem;
+  }
+  .amount-row {
+    display: flex;
+  }
+  .price {
+    display: none;
+  }
 }
