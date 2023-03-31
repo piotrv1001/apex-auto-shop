@@ -6,6 +6,15 @@
   height: 100%;
 }
 
+.test-btn {
+  text-transform: uppercase;
+  align-self: flex-start;
+  margin-bottom: 1rem;
+  width: 100%;
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
+
 .login-card {
   background-color: white;
   border-radius: 0.5rem;
@@ -85,4 +94,22 @@
 
 .no-account-btn {
   margin-top: 6rem;
+}
+
+@media (max-width: 2000px) {
+  .login-card {
+    width: 30%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .login-card {
+    width: 60%;
+  }
+}
+
+@media (max-width: 600px) {
+  .login-card {
+    width: 80%;
+  }
 }

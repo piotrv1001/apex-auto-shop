@@ -56,7 +56,7 @@ export class ProductService {
     bmw.name = 'BMW 8 Series Gran Coupe';
     bmw.description =
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas quis tristique eros, bibendum venenatis odio. Praesent sagittis et quam sit amet tempor. Ut dignissim placerat.';
-    bmw.imgUrl = 'mclaren.png';
+    bmw.imgUrl = 'bmw.png';
     bmw.stars = 3;
     bmw.price = 150000;
     const porsche = new Product();
@@ -77,7 +77,7 @@ export class ProductService {
     ferrari.name = 'Ferrari SF90 Stradale';
     ferrari.description =
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas quis tristique eros, bibendum venenatis odio. Praesent sagittis et quam sit amet tempor. Ut dignissim placerat.';
-    ferrari.imgUrl = 'ferrari.png';
+    ferrari.imgUrl = 'Ferrari.png';
     ferrari.stars = 5;
     ferrari.price = 300000;
     return await Promise.all([

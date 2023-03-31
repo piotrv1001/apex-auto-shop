@@ -76,3 +76,55 @@
   cursor: pointer;
   background-color: #555;
 }
+
+@media (max-width: 2000px) {
+  .products {
+    width: 60%;
+  }
+  .panel {
+    .panel-content {
+      width: 60%;
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .products {
+    width: 80%;
+  }
+  .product-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .panel {
+    .panel-content {
+      width: 80%;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .products {
+    width: 90%;
+  }
+  .product-list {
+    grid-template-columns: 1fr;
+  }
+  .panel {
+    .panel-content {
+      width: 90%;
+    }
+  }
+  .left-panel {
+    margin: 0;
+  }
+  .right-panel {
+    margin: 0;
+  }
+  .panel-item {
+    width: 48%;
+  }
+  .panel-row {
+    justify-content: space-between;
+  }
+}
+

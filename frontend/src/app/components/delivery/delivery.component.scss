@@ -5,3 +5,12 @@
 .wrapper {
   margin: 2rem 0;
 }
+
+@media (max-width: 600px) {
+  .login-heading {
+    font-size: 2rem !important;
+  }
+  .form-field {
+    width: 100%;
+  }
+}

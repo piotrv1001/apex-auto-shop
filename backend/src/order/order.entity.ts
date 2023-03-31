@@ -17,22 +17,22 @@ export class Order {
   @Column({ nullable: true })
   date?: Date;
 
-  @Column({ nullable: true })
+  @Column({ nullable: true, default: '' })
   phoneNumber?: string;
 
-  @Column({ nullable: true })
+  @Column({ nullable: true, default: '' })
   zipCode?: string;
 
-  @Column({ nullable: true })
+  @Column({ nullable: true, default: '' })
   street?: string;
 
-  @Column({ nullable: true })
+  @Column({ nullable: true, default: '' })
   houseNumber?: string;
 
-  @Column({ nullable: true })
+  @Column({ nullable: true, default: '' })
   city?: string;
 
-  @Column({ nullable: true })
+  @Column({ nullable: true, default: '' })
   name?: string;
 
   @Column({ nullable: true, default: true })

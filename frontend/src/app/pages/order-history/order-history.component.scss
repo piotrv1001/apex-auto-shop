@@ -45,3 +45,48 @@
   font-size: 1.1rem;
   font-weight: bold;
 }
+
+@media (max-width: 2000px) {
+  .accordion-container {
+    width: 60%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .accordion-container {
+    width: 80%;
+  }
+  .product-img {
+    width: 15%;
+  }
+}
+
+@media (max-width: 600px) {
+  .wrapper {
+    padding: 0;
+  }
+  .accordion-container {
+    width: 90%;
+  }
+  .grid-table {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .date-col {
+    display: none;
+  }
+  .product-img {
+    display: none;
+  }
+  .item {
+    padding: 0;
+  }
+  .item-row {
+    justify-content: space-between;
+  }
+  .address-col {
+    display: none;
+  }
+  .product-name {
+    font-size: 1rem;
+  }
+}

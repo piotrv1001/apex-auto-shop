@@ -3,7 +3,7 @@
     <div class="login-heading">Delivery information</div>
     <form class="delivery-form" (ngSubmit)="onSubmit()" #deliveryForm="ngForm">
       <h2>Name</h2>
-      <mat-form-field>
+      <mat-form-field class="form-field">
         <input
           matInput
           placeholder="Name"
@@ -13,14 +13,14 @@
       <h2>Address</h2>
       <div>
         <div>
-          <mat-form-field class="address-item" *ngIf="deliveryData.address?.city != null">
+          <mat-form-field class="address-item form-field" *ngIf="deliveryData.address?.city != null">
             <input
               matInput
               placeholder="City"
               [(ngModel)]="deliveryData.address!.city"
               name="city">
           </mat-form-field>
-          <mat-form-field class="address-item" *ngIf="deliveryData.address?.zipCode != null">
+          <mat-form-field class="address-item form-field" *ngIf="deliveryData.address?.zipCode != null">
             <input
               matInput
               placeholder="Zip code"
@@ -30,14 +30,14 @@
           </mat-form-field>
         </div>
         <div>
-          <mat-form-field class="address-item" *ngIf="deliveryData.address?.street">
+          <mat-form-field class="address-item form-field" *ngIf="deliveryData.address?.street != null">
             <input
               matInput
               placeholder="Street"
               [(ngModel)]="deliveryData.address!.street"
               name="street">
           </mat-form-field>
-          <mat-form-field class="address-item" *ngIf="deliveryData.address?.houseNumber">
+          <mat-form-field class="address-item form-field" *ngIf="deliveryData.address?.houseNumber != null">
             <input
               matInput
               placeholder="House number"
@@ -47,7 +47,7 @@
         </div>
       </div>
       <h2>Email</h2>
-      <mat-form-field>
+      <mat-form-field class="form-field">
         <input
           matInput
           placeholder="Email"
@@ -55,7 +55,7 @@
           name="email">
       </mat-form-field>
       <h2>Phone number</h2>
-      <mat-form-field>
+      <mat-form-field class="form-field">
         <input
           matInput
           placeholder="Phone number"

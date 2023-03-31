@@ -2,8 +2,8 @@
   <div class="accordion-container">
     <div class="grid-table table-header">
       <div>Order ID</div>
-      <div>Date</div>
-      <div>Address</div>
+      <div class="date-col">Date</div>
+      <div class="address-col">Address</div>
       <div>Total</div>
       <div>Status</div>
     </div>
@@ -12,8 +12,8 @@
           <mat-expansion-panel-header>
             <div class="grid-table" style="width: 100%;">
              <div>{{ order.orderNumber }}</div>
-             <div>{{ order.date | date : 'longDate' }}</div>
-             <div>{{ formatAddress(order) }}</div>
+             <div class="date-col">{{ order.date | date : 'longDate' }}</div>
+             <div class="address-col">{{ formatAddress(order) }}</div>
              <div>{{ 200000 | currency }}</div>
              <div><span class="status">Paid</span></div>
             </div>
