@@ -4,7 +4,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from './shared/auth/auth.service';
 import { CartService } from './services/cart.service';
-import { ProductService } from './services/product.service';
+// import { ProductService } from './services/product.service';
 
 @Component({
   selector: 'app-root',
@@ -23,10 +23,11 @@ export class AppComponent implements OnInit, OnDestroy {
     private authService: AuthService,
     private localStorageService: LocalStorageService,
     private cartService: CartService,
-    private productService: ProductService) {}
+    // private productService: ProductService
+    ) {}
 
   ngOnInit(): void {
-    this.initProducts();
+    // this.initProducts();
     this.authService.isAuthenticated().subscribe({
       next: (payload: JwtPayload) => {
         this.localStorageService.saveUserId(payload.id);
@@ -56,10 +57,10 @@ export class AppComponent implements OnInit, OnDestroy {
     this.orderAmountSub?.unsubscribe();
   }
 
-  private initProducts(): void {
-    this.productService.initProducts().subscribe(products => {
-      console.log('products', products);
-    })
-  }
+  // private initProducts(): void {
+  //   this.productService.initProducts().subscribe(products => {
+  //     console.log('products', products);
+  //   })
+  // }
 
 }
