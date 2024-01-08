@@ -1,5 +1,5 @@
 
-# E-commerce Website
+# ApexAutoShop
 
 In this project, I've built an E-commerce full-stack web app using Angular for the frontend and Nest.js for the backend. The app allows users to buy their favorite sports cars :)
 
